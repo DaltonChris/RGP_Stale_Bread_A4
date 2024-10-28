@@ -5,23 +5,25 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public GameObject ballPrefab;      // Ball to be launched
-    public Transform spawnPoint;       // Spawn location (at the top of the player)
+    public Transform spawnPoint;       // The spawn location at the top of the player
     public LineRenderer lineRenderer;  // Line to show trajectory
     public float maxLaunchForce = 15f; // Maximum force for launch
+    public float minAngle = -80f;      // Minimum rotation angle
+    public float maxAngle = 80f;       // Maximum rotation angle
 
     private bool ballActive = false;   // Track if a ball is active
 
     void Update()
     {
-        RotateToFaceMouse();  // Always rotate the player to face the mouse
+        RotateToFaceMouse();  // Rotate player towards mouse with clamped angles
 
         if (!ballActive)
         {
-            UpdateTrajectory();  // Only show trajectory if no ball is active
+            UpdateTrajectory();  // Show trajectory preview
 
             if (Input.GetMouseButtonDown(0))
             {
-                LaunchBall();
+                LaunchBall();  // Launch the ball when the mouse is clicked
             }
         }
     }
@@ -31,80 +33,84 @@ public class Shooter : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePosition - (Vector2)transform.position).normalized;
 
+        // Calculate the angle based on the mouse direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 90f;
+
+        // Clamp the rotation angle within the allowed range
+        angle = Mathf.Clamp(angle, minAngle, maxAngle);
+
+        // Apply the clamped rotation to the player
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void UpdateTrajectory()
     {
-        lineRenderer.enabled = true;  // Make sure the line is enabled
+        lineRenderer.enabled = true;  // Ensure the LineRenderer is active
 
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 launchDirection = (mousePosition - (Vector2)spawnPoint.position).normalized;
+        // Use the direction from the spawnPoint's forward direction (top side)
+        Vector2 launchDirection = spawnPoint.up;  // spawnPoint.up gives the correct direction
 
         DrawTrajectory(spawnPoint.position, launchDirection * maxLaunchForce);
     }
 
     void LaunchBall()
     {
-        ballActive = true;  // Set ball as active
-        lineRenderer.enabled = false;  // Disable the trajectory line
+        ballActive = true;  // Set the ball as active
+        lineRenderer.enabled = false;  // Disable the trajectory during play
 
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 launchDirection = (mousePosition - (Vector2)spawnPoint.position).normalized;
+        // Use the spawnPoint's up direction for consistent launch
+        Vector2 launchDirection = spawnPoint.up;
 
+        // Instantiate and launch the ball
         GameObject ball = Instantiate(ballPrefab, spawnPoint.position, Quaternion.identity);
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         rb.AddForce(launchDirection * maxLaunchForce, ForceMode2D.Impulse);
 
+        // Subscribe to the reset event
         Ball ballScript = ball.GetComponent<Ball>();
-        ballScript.OnBallReset += ResetBall;  // Subscribe to reset event
+        ballScript.OnBallReset += ResetBall;
     }
 
     void DrawTrajectory(Vector2 startPoint, Vector2 initialVelocity)
-{
-    List<Vector2> trajectoryPoints = new List<Vector2>();  // Store trajectory points
-    Vector2 currentPoint = startPoint;  // Start at the spawn point
-    Vector2 velocity = initialVelocity;  // Use the initial velocity for calculations
-    float timeStep = 0.05f;  // Smaller time steps for precision
-
-    trajectoryPoints.Add(currentPoint);  // Add the starting point
-
-    // Loop through trajectory points until a collision occurs or the maximum steps are reached
-    for (int i = 0; i < 100; i++)  // More points for smoother trajectory
     {
-        // Calculate the next point using kinematics: next = current + velocity * t + 0.5 * gravity * t^2
-        Vector2 nextPoint = currentPoint + velocity * timeStep + 0.5f * Physics2D.gravity * (timeStep * timeStep);
+        List<Vector2> trajectoryPoints = new List<Vector2>();  // Store trajectory points
+        Vector2 currentPoint = startPoint;
+        Vector2 velocity = initialVelocity;
+        float timeStep = 0.05f;  // Small time steps for precision
 
-        // Perform a raycast between the current point and the next point
-        RaycastHit2D hit = Physics2D.Raycast(currentPoint, nextPoint - currentPoint, (nextPoint - currentPoint).magnitude);
+        trajectoryPoints.Add(currentPoint);  // Add the starting point
 
-        if (hit.collider != null)
+        // Loop through trajectory points until collision or max steps
+        for (int i = 0; i < 100; i++)
         {
-            // Add the hit point to the trajectory and stop further calculations
-            trajectoryPoints.Add(hit.point);
-            break;
+            Vector2 nextPoint = currentPoint + velocity * timeStep + 0.5f * Physics2D.gravity * (timeStep * timeStep);
+
+            // Check for collisions along the path
+            RaycastHit2D hit = Physics2D.Raycast(currentPoint, nextPoint - currentPoint, (nextPoint - currentPoint).magnitude);
+
+            if (hit.collider != null)
+            {
+                trajectoryPoints.Add(hit.point);  // Add hit point
+                break;  // Stop the trajectory at the hit point
+            }
+            else
+            {
+                trajectoryPoints.Add(nextPoint);  // Add the next point
+                currentPoint = nextPoint;  // Update current point
+                velocity += Physics2D.gravity * timeStep;  // Update velocity for gravity
+            }
         }
-        else
-        {
-            // No collision detected, add the next point to the trajectory
-            trajectoryPoints.Add(nextPoint);
-            currentPoint = nextPoint;  // Move to the next point
 
-            // Update velocity for the next step (gravity affects vertical velocity)
-            velocity += Physics2D.gravity * timeStep;
+        // Apply the trajectory points to the LineRenderer
+        lineRenderer.positionCount = trajectoryPoints.Count;
+        for (int i = 0; i < trajectoryPoints.Count; i++)
+        {
+            lineRenderer.SetPosition(i, trajectoryPoints[i]);
         }
     }
 
-    // Apply the calculated points to the LineRenderer
-    lineRenderer.positionCount = trajectoryPoints.Count;
-    for (int i = 0; i < trajectoryPoints.Count; i++)
-    {
-        lineRenderer.SetPosition(i, trajectoryPoints[i]);
-    }
-}
     void ResetBall()
     {
-        ballActive = false;  // Set ball as inactive
+        ballActive = false;  // Reset the ball state
     }
 }
