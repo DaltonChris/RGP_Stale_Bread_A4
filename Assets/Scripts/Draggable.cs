@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Draggable : MonoBehaviour
 {
-    private bool isDragging = false;    // Track if the object is being dragged
-    private Vector3 offset;             // Offset between mouse and object position
-    private Collider2D objectCollider;  // Reference to this object's collider
-    private ContactFilter2D contactFilter;  // Filter to ignore triggers and non-solid objects
+    private bool isDragging = false;
+    private Vector3 offset;
+    private Rigidbody2D rb;
+    private Collider2D col;
 
-    void Start()
+    public float dragSpeed = 0.05f;  // Speed for smooth movement during dragging
+
+    private void Start()
     {
-        objectCollider = GetComponent<Collider2D>();  // Get the collider
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
 
-        // Setup a contact filter to ignore triggers and only detect solid colliders
-        contactFilter = new ContactFilter2D();
-        contactFilter.useTriggers = false;
-        contactFilter.SetLayerMask(Physics2D.AllLayers);
+        rb.isKinematic = true;  // Ensure it doesn't react to physics forces
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))  // Start dragging with RMB
+        if (Input.GetMouseButtonDown(1))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
 
             Collider2D hit = Physics2D.OverlapPoint(mousePosition);
+
             if (hit != null && hit.transform == transform)
             {
                 isDragging = true;
@@ -34,43 +35,53 @@ public class Draggable : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(1))  // Stop dragging when RMB is released
+        if (Input.GetMouseButtonUp(1))
         {
             isDragging = false;
         }
 
-        if (isDragging)  // Move the object while dragging
+        if (isDragging)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
 
-            Vector3 newPosition = mousePosition + offset;
+            Vector3 targetPosition = mousePosition + offset;
 
-            // Only move the object if it doesn't overlap with others
-            if (!WouldOverlapAtPosition(newPosition))
+            // Use Rigidbody2D.Cast to detect potential collisions along the drag direction
+            Vector2 movementDirection = (targetPosition - transform.position).normalized;
+            float distance = (targetPosition - transform.position).magnitude;
+
+            RaycastHit2D[] hits = new RaycastHit2D[10];  // Array to store collision hits
+            int hitCount = rb.Cast(movementDirection, hits, distance);
+
+            bool canMove = true;
+            Vector2 slidingDirection = movementDirection;
+
+            if (hitCount > 0)
             {
-                transform.position = newPosition;
+                foreach (var hit in hits)
+                {
+                    if (hit.collider != null && hit.collider.transform != transform)
+                    {
+                        canMove = false;
+
+                        // Calculate the sliding direction along the hit surface
+                        Vector2 collisionNormal = hit.normal;
+                        slidingDirection = Vector3.ProjectOnPlane(movementDirection, collisionNormal).normalized;
+                        break;
+                    }
+                }
+            }
+
+            // Move the object either directly or with sliding
+            if (canMove)
+            {
+                transform.position = targetPosition;
+            }
+            else
+            {
+                transform.position += (Vector3)slidingDirection * dragSpeed;
             }
         }
-    }
-
-    bool WouldOverlapAtPosition(Vector3 newPosition)
-    {
-        // Temporarily move the object to the new position
-        Vector3 originalPosition = transform.position;
-        transform.position = newPosition;
-
-        // Disable the collider to avoid self-detection
-        objectCollider.enabled = false;
-
-        // Check if the object's collider would overlap with others
-        Collider2D[] results = new Collider2D[10];  // Adjust size if needed
-        int overlapCount = objectCollider.OverlapCollider(contactFilter, results);
-
-        // Re-enable the collider and move back to original position
-        objectCollider.enabled = true;
-        transform.position = originalPosition;
-
-        return overlapCount > 0;  // Return true if any overlapping collider is detected
     }
 }
