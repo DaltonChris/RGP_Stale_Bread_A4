@@ -1186,8 +1186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapePrefabs:
-  - {fileID: 6325523228098588343}
-  - {fileID: 7638184987167240685}
+  - {fileID: 246516581824140368, guid: 629bb14caa79b5c478a0c88a97d6e826, type: 3}
+  - {fileID: 2303555822017041318, guid: 5be81c0ea5b9c644c85d53a4e288e9e6, type: 3}
   shapeCount: 5
   spawnPadding: 1.5
   spawnSpace: {fileID: 1768773595}
@@ -1854,11 +1854,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 316fe1085c5390244a40956a1d56b499, type: 3}
---- !u!1 &6325523228098588343 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5236760618710234921, guid: 316fe1085c5390244a40956a1d56b499, type: 3}
-  m_PrefabInstance: {fileID: 1423141881630682122}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7157245237631657633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1977,11 +1972,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bab6da721333366409aa3c63cac86dfd, type: 3}
---- !u!1 &7638184987167240685 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3088918533608236881, guid: c10403676d4af274eaf498161adc8ea9, type: 3}
-  m_PrefabInstance: {fileID: 7157245237631657633}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
