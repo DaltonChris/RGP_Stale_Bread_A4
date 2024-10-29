@@ -10,11 +10,20 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D rb;
     public GameObject shootTrail;
+    private GameObject existingTrail;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         IsBallActive = true;  // Sets ball as active
+
+
+        existingTrail = GameObject.FindWithTag("ShootTrail");//Check if a trail is already in the scene
+        if(existingTrail != null)
+        {
+            existingTrail.GetComponent<TrailRenderer>().startColor = Color.black;
+            existingTrail.GetComponent<TrailRenderer>().endColor = Color.black;
+        }
     }
 
     private void OnBecameInvisible()
@@ -23,7 +32,6 @@ public class Ball : MonoBehaviour
         OnBallReset?.Invoke();
         IsBallActive = false; // Sets ball as inactive
 
-        GameObject existingTrail = GameObject.FindWithTag("ShootTrail");//Check if a trail is already in the scene
         if(existingTrail != null)
         {
             Destroy(existingTrail);//If it is, destroy it

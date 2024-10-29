@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - SFX
+  - ShootTrail
   layers:
   - Default
   - TransparentFX
