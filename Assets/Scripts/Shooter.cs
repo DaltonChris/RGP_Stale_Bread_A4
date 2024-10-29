@@ -21,7 +21,7 @@ public class Shooter : MonoBehaviour
         {
             UpdateTrajectory();  // Show trajectory preview
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 LaunchBall();  // Launch the ball when the mouse is clicked
             }

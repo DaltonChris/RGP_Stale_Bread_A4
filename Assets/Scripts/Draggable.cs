@@ -24,7 +24,7 @@ public class Draggable : MonoBehaviour
 
         if (Ball.IsBallActive) return; // prevent dragging of objects while ball is active in scene
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
@@ -38,7 +38,7 @@ public class Draggable : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
         }
