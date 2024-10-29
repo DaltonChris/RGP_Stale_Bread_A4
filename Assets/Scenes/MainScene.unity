@@ -1936,7 +1936,7 @@ GameObject:
   - component: {fileID: 1721374448}
   - component: {fileID: 1721374447}
   m_Layer: 0
-  m_Name: Light 2D
+  m_Name: Global Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2001,7 +2001,7 @@ Transform:
   m_GameObject: {fileID: 1721374446}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.316944, y: 2.2548497, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2528,14 +2528,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 467074723083503102, guid: bab6da721333366409aa3c63cac86dfd, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1443522154038922805, guid: bab6da721333366409aa3c63cac86dfd, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1788830826966862846, guid: bab6da721333366409aa3c63cac86dfd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2580,6 +2572,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7604273805836027721, guid: bab6da721333366409aa3c63cac86dfd, type: 3}
+      propertyPath: globalLight
+      value: 
+      objectReference: {fileID: 1721374447}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
