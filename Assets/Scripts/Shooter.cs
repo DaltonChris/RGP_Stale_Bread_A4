@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Shooter : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Shooter : MonoBehaviour
     public float maxLaunchForce = 15f; // Maximum force for launch
     public float minAngle = -80f;      // Minimum rotation angle
     public float maxAngle = 80f;       // Maximum rotation angle
+    public Light2D globalLight;
 
     private bool ballActive = false;   // Track if a ball is active
 
@@ -57,6 +59,7 @@ public class Shooter : MonoBehaviour
     {
         ballActive = true;  // Set the ball as active
         lineRenderer.enabled = false;  // Disable the trajectory during play
+        globalLight.intensity = 0;
 
         // Use the spawnPoint's up direction for consistent launch
         Vector2 launchDirection = spawnPoint.up;
@@ -112,5 +115,6 @@ public class Shooter : MonoBehaviour
     void ResetBall()
     {
         ballActive = false;  // Reset the ball state
+        globalLight.intensity = 1;
     }
 }
