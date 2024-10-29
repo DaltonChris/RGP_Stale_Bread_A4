@@ -11,7 +11,7 @@ public class Shooter : MonoBehaviour
     public float maxLaunchForce = 15f; // Maximum force for launch
     public float minAngle = -80f;      // Minimum rotation angle
     public float maxAngle = 80f;       // Maximum rotation angle
-    public Light2D globalLight;
+    public Light2D globalLight;        // Global light componet in scene
 
     private bool ballActive = false;   // Track if a ball is active
 
