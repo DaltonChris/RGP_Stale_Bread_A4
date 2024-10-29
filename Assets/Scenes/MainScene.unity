@@ -799,7 +799,7 @@ Transform:
   m_GameObject: {fileID: 259747018}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.405089, y: -1.1789911, z: 0.035976354}
+  m_LocalPosition: {x: -9.05, y: -3.42, z: 0.035976354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1292,6 +1292,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragSpeed: 0.05
+  skinWidth: 0.01
+  collisionBuffer: 0.001
 --- !u!1 &866664304
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,7 +2376,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c841254fc9e0b5438ef8781eeb549ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragSpeed: 0.05
+  dragSpeed: 3
+  skinWidth: 0.1
+  collisionBuffer: 0.001
 --- !u!1 &1777966671
 GameObject:
   m_ObjectHideFlags: 0

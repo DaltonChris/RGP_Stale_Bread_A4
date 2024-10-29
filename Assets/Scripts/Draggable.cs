@@ -9,26 +9,25 @@ public class Draggable : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
 
-    public float dragSpeed = 0.05f;  // Speed for smooth movement during dragging
+    public float dragSpeed = 10f;  // Speed for smooth movement
+    public float skinWidth = 0.01f;  // Extra padding to avoid clipping
+    public float collisionBuffer = 0.001f;  // Small buffer to prevent jitter
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
 
-        rb.isKinematic = true;  // Ensure it doesn't react to physics forces
+        rb.isKinematic = true;  // Disable physics interactions
     }
 
     void Update()
     {
-
-        if (Ball.IsBallActive) return; // prevent dragging of objects while ball is active in scene
+        if (Ball.IsBallActive) return;  // Prevent dragging when the ball is active
 
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0;
-
+            Vector3 mousePosition = GetMouseWorldPosition();
             Collider2D hit = Physics2D.OverlapPoint(mousePosition);
 
             if (hit != null && hit.transform == transform)
@@ -45,46 +44,71 @@ public class Draggable : MonoBehaviour
 
         if (isDragging)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0;
+            Vector3 targetPosition = GetMouseWorldPosition() + offset;
+            MoveTowardsTarget(targetPosition);
+        }
+    }
 
-            Vector3 targetPosition = mousePosition + offset;
+    // Handles smooth movement and collision handling
+    private void MoveTowardsTarget(Vector3 targetPosition)
+    {
+        Vector2 movementDirection = (targetPosition - transform.position).normalized;
+        float distance = Vector3.Distance(transform.position, targetPosition);
 
-            // Use Rigidbody2D.Cast to detect potential collisions along the drag direction
-            Vector2 movementDirection = (targetPosition - transform.position).normalized;
-            float distance = (targetPosition - transform.position).magnitude;
+        // Smooth movement towards the target position
+        Vector3 interpolatedPosition = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * dragSpeed);
 
-            RaycastHit2D[] hits = new RaycastHit2D[10];  // Array to store collision hits
-            int hitCount = rb.Cast(movementDirection, hits, distance);
+        // Perform collision checks only along the interpolation path
+        if (!CheckForCollisionsAndSlide(movementDirection, interpolatedPosition))
+        {
+            transform.position = interpolatedPosition;  // Move only if no blocking collisions
+        }
+    }
 
-            bool canMove = true;
-            Vector2 slidingDirection = movementDirection;
+    // Check for collisions along the movement path and adjust movement
+    private bool CheckForCollisionsAndSlide(Vector2 direction, Vector3 targetPosition)
+    {
+        float distance = Vector3.Distance(transform.position, targetPosition);
+        RaycastHit2D[] hits = new RaycastHit2D[10];
+        int hitCount = rb.Cast(direction, hits, distance + skinWidth);
 
-            if (hitCount > 0)
+        if (hitCount > 0)
+        {
+            Vector2 finalDirection = direction;
+            float remainingDistance = distance;
+
+            foreach (var hit in hits)
             {
-                foreach (var hit in hits)
+                if (hit.collider != null && hit.collider != col)
                 {
-                    if (hit.collider != null && hit.collider.transform != transform)
-                    {
-                        canMove = false;
+                    // Calculate sliding direction along the collision surface
+                    Vector2 collisionNormal = hit.normal;
+                    Vector2 projectedDirection = Vector3.ProjectOnPlane(finalDirection, collisionNormal).normalized;
 
-                        // Calculate the sliding direction along the hit surface
-                        Vector2 collisionNormal = hit.normal;
-                        slidingDirection = Vector3.ProjectOnPlane(movementDirection, collisionNormal).normalized;
-                        break;
+                    if (projectedDirection == Vector2.zero)
+                    {
+                        return true;  // Stop if wedged between objects
                     }
+
+                    // Adjust remaining distance to just before the collision
+                    remainingDistance = Mathf.Min(remainingDistance, hit.distance - skinWidth);
+                    finalDirection = projectedDirection;
                 }
             }
 
-            // Move the object either directly or with sliding
-            if (canMove)
-            {
-                transform.position = targetPosition;
-            }
-            else
-            {
-                transform.position += (Vector3)slidingDirection * dragSpeed;
-            }
+            // Apply movement along the adjusted sliding direction
+            transform.position += (Vector3)finalDirection * (remainingDistance - collisionBuffer);
+            return true;  // Collision was detected and handled
         }
+
+        return false;  // No collisions, proceed with normal movement
+    }
+
+    // Get the mouse position in world coordinates
+    private Vector3 GetMouseWorldPosition()
+    {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;  // Keep it in 2D space
+        return mousePosition;
     }
 }
