@@ -41,4 +41,13 @@ public class Ball : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    // Collison check for objects that need to be avoided
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Destroy"))
+        {
+            OnBecameInvisible(); // Call Method to reset ball
+        }
+    }
 }

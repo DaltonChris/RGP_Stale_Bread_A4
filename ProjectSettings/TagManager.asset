@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - SFX
+  - Destroy
   - ShootTrail
   layers:
   - Default
