@@ -8,6 +8,7 @@ TagManager:
   - SFX
   - Destroy
   - ShootTrail
+  - Shape
   layers:
   - Default
   - TransparentFX
