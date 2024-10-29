@@ -25,7 +25,7 @@ public class ShapeSpawner : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             // Check if the spawn area is empty before respawning shapes
-            if (IsSpawnAreaEmpty())
+            if (IsSpawnAreaEmpty() && spawnedShapes.Count <= 0)
             {
                 SpawnShapes();
             }
