@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3587187893048250128}
   - component: {fileID: 652003819255188743}
   - component: {fileID: 2514340764112541024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball Destroyer
   m_TagString: Destroy
   m_Icon: {fileID: 0}
