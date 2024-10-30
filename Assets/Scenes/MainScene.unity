@@ -1734,6 +1734,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShapeSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 8349480048913528289, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

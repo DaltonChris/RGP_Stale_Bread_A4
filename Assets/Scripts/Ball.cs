@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     public GameObject shootTrail;
     private GameObject existingTrail;
 
+    // Volume & componets values
     Volume globalVol;
     SplitToning SplitToning;
     float splitDefValue = -100f;
@@ -21,7 +22,7 @@ public class Ball : MonoBehaviour
     DepthOfField DepthOfField;
     float dofDefValue = 1f;
     float dofHitValue = 300f;
-    public float lerpDuration = 2.5f;
+    public float lerpDuration = 2.15f;
 
     void Start()
     {
@@ -79,13 +80,20 @@ public class Ball : MonoBehaviour
             OnBecameInvisible(); // Call Method to reset ball
         }
     }
-
+    /// <summary>
+    /// Disable ball interactions, lerp for volume effects, destory once complete
+    /// </summary>
+    /// <returns></returns>
     public IEnumerator DestroyAfterLerp()
     {
         DisabledInteractions();
         yield return StartCoroutine(BallDestoryedLerpDefault());
         Destroy(gameObject);
     }
+    /// <summary>
+    /// Lerps between Def and Hit values for effect on Global VOl
+    /// </summary>
+    /// <returns></returns>
     IEnumerator BallDestoryedLerpDefault()
     {
         float elapsedTime = 0f;
@@ -124,7 +132,9 @@ public class Ball : MonoBehaviour
             DepthOfField.focalLength.Override(dofDefValue);
         }
     }
-
+    /// <summary>
+    /// Method to disable visual componets and collisons to be used delaying obj destroy
+    /// </summary>
     void DisabledInteractions()
     {
         gameObject.GetComponent<Light2D>().enabled = false;
