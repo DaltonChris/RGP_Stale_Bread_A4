@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
 
 public class Draggable : MonoBehaviour
 {
@@ -12,13 +15,21 @@ public class Draggable : MonoBehaviour
     public float dragSpeed = 10f;  // Speed for smooth movement
     public float skinWidth = 0.01f;  // Extra padding to avoid clipping
     public float collisionBuffer = 0.001f;  // Small buffer to prevent jitter
+    public float chromaticValueOnDrag = 0.25f;  // Intensity when dragging
+    public float chromaticValueDefault = 0f;   // Default intensity when not dragging
+    Volume globalVol;
+    ChromaticAberration chromaticAberration;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        globalVol = GameObject.FindWithTag("GlobalVol").GetComponent<Volume>();
 
         rb.isKinematic = true;  // Disable physics interactions
+        // Access the Chromatic Aberration component in the Volume
+        if (globalVol.profile.TryGet(out chromaticAberration))
+            chromaticAberration.intensity.Override(chromaticValueDefault);
     }
 
     void Update()
@@ -34,12 +45,23 @@ public class Draggable : MonoBehaviour
             {
                 isDragging = true;
                 offset = transform.position - mousePosition;
+
+                // Set chromatic aberration intensity to highlight dragging
+                if (chromaticAberration != null)
+                {
+                    chromaticAberration.intensity.Override(chromaticValueOnDrag);
+                }
             }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             isDragging = false;
+            // reSet chromatic aberration
+            if (chromaticAberration != null)
+            {
+                chromaticAberration.intensity.Override(chromaticValueDefault);
+            }
         }
 
         if (isDragging)

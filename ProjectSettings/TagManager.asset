@@ -9,6 +9,7 @@ TagManager:
   - Destroy
   - ShootTrail
   - Shape
+  - GlobalVol
   layers:
   - Default
   - TransparentFX
