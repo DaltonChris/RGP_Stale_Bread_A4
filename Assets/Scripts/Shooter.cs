@@ -59,7 +59,7 @@ public class Shooter : MonoBehaviour
     {
         ballActive = true;  // Set the ball as active
         lineRenderer.enabled = false;  // Disable the trajectory during play
-        globalLight.intensity = 0.1f;
+        globalLight.intensity = 0.15f;
 
         // Use the spawnPoint's up direction for consistent launch
         Vector2 launchDirection = spawnPoint.up;
