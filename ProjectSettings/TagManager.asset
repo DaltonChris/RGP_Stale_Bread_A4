@@ -10,6 +10,8 @@ TagManager:
   - ShootTrail
   - Shape
   - GlobalVol
+  - Obstacle
+  - CineCam
   layers:
   - Default
   - TransparentFX

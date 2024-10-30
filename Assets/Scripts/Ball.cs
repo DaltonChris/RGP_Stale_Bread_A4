@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Cinemachine;
 
 public class Ball : MonoBehaviour
 {
@@ -25,10 +26,22 @@ public class Ball : MonoBehaviour
     float dofHitValue = 300f;
     public float lerpDuration = 2.25f;
 
+    //cinemachine
+    CinemachineVirtualCamera cinCam;
+    CinemachineBasicMultiChannelPerlin BasicMultiChannelPerlin;
+    float shakeActiveValue = 1.2f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         IsBallActive = true;  // Sets ball as active
+
+        cinCam = GameObject.FindWithTag("CineCam").GetComponent<CinemachineVirtualCamera>();
+        if (cinCam != null)
+            BasicMultiChannelPerlin = cinCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        BasicMultiChannelPerlin.m_FrequencyGain = 0f;
 
         globalVol = GameObject.FindWithTag("GlobalVol").GetComponent<Volume>();
 
@@ -69,6 +82,7 @@ public class Ball : MonoBehaviour
         {
             DepthOfField.focalLength.Override(dofHitValue);
         }
+        
         StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
         //Destroy(gameObject);
     }
@@ -105,6 +119,7 @@ public class Ball : MonoBehaviour
 
         while (elapsedTime < lerpDuration)
         {
+            BasicMultiChannelPerlin.m_FrequencyGain = shakeActiveValue;
             // Calculate lerped values
             float lerpSplitToning = Mathf.Lerp(startSplitToning, splitDefValue, elapsedTime / lerpDuration);
             float lerpDepthOfField = Mathf.Lerp(startDepthOfField, dofDefValue, elapsedTime / lerpDuration);
@@ -131,6 +146,10 @@ public class Ball : MonoBehaviour
         if (DepthOfField != null)
         {
             DepthOfField.focalLength.Override(dofDefValue);
+        }
+        if (BasicMultiChannelPerlin.m_FrequencyGain != 0f) //Rest multichanperlin for cinemachine
+        {
+            BasicMultiChannelPerlin.m_FrequencyGain = 0f;
         }
     }
     /// <summary>

@@ -177,5 +177,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f4dd536f1fd7a49a35122fec9a133b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 203090866127373764}
-  rotationMultiplier: 9.95
+  Min_rotationMultiplier: 7.5
+  Max_rotationMultiplier: 9.95
+  isNegativeRotate: 1
