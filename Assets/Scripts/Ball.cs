@@ -49,6 +49,7 @@ public class Ball : MonoBehaviour
     {
         // Notify the shooter to reset when the ball leaves the screen
         OnBallReset?.Invoke();
+        
         IsBallActive = false; // Sets ball as inactive
 
         if(existingTrail != null)
@@ -79,7 +80,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyAfterLerp()
+    public IEnumerator DestroyAfterLerp()
     {
         DisabledInteractions();
         yield return StartCoroutine(BallDestoryedLerpDefault());
