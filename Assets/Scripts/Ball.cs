@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
 {
     public static bool IsBallActive = false;
     public event Action OnBallReset;  // Event to notify when the ball resets
+    public GameObject BackObj;
 
     private Rigidbody2D rb;
     public GameObject shootTrail;
@@ -22,7 +23,7 @@ public class Ball : MonoBehaviour
     DepthOfField DepthOfField;
     float dofDefValue = 1f;
     float dofHitValue = 300f;
-    public float lerpDuration = 2.15f;
+    public float lerpDuration = 2.25f;
 
     void Start()
     {
@@ -140,5 +141,6 @@ public class Ball : MonoBehaviour
         gameObject.GetComponent<Light2D>().enabled = false;
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        BackObj.SetActive(false);
     }
 }
