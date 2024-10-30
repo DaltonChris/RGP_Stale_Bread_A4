@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4466875467659518729}
   - component: {fileID: 6837749160716010490}
   - component: {fileID: 7684497803220417727}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MovableTriangle
-  m_TagString: Untagged
+  m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c841254fc9e0b5438ef8781eeb549ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dragSpeed: 0.05
+  dragSpeed: 3
   skinWidth: 0.01
   collisionBuffer: 0.001
   HoverSprite: {fileID: 4442361367861432271}

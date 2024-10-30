@@ -8,6 +8,7 @@ TagManager:
   - SFX
   - Destroy
   - ShootTrail
+  - Shape
   layers:
   - Default
   - TransparentFX
@@ -15,10 +16,10 @@ TagManager:
   - CollisionLayer
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enviournment
+  - PassOverWall
+  - Shapes
+  - Ball
   - 
   - 
   - 
