@@ -13,9 +13,14 @@ public class Ball : MonoBehaviour
     public GameObject BackObj;
 
     private Rigidbody2D rb;
+    private CircleCollider2D col2d;
     public GameObject shootTrail;
     private GameObject existingTrail;
     public Gradient prevTrailGradient;
+
+    public GameObject hitParticles;
+    public GameObject destroyParticles;
+    public GameObject firedParticles;
 
     // Volume & componets values
     Volume globalVol;
@@ -37,6 +42,7 @@ public class Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         IsBallActive = true;  // Sets ball as active
+        Instantiate(firedParticles, transform.position, Quaternion.identity);
 
         cinCam = GameObject.FindWithTag("CineCam").GetComponent<CinemachineVirtualCamera>();
         if (cinCam != null)
@@ -64,6 +70,8 @@ public class Ball : MonoBehaviour
 
     private void OnBecameInvisible()
     {
+        Instantiate(destroyParticles, transform.position, Quaternion.identity);
+        
         // Notify the shooter to reset when the ball leaves the screen
         OnBallReset?.Invoke();
         
@@ -95,6 +103,10 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Destroy"))
         {
             OnBecameInvisible(); // Call Method to reset ball
+        }
+        else
+        {
+            Instantiate(hitParticles, transform.position, Quaternion.identity);
         }
     }
     /// <summary>

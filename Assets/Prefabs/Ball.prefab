@@ -196,6 +196,9 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  hitParticles: {fileID: 203675280561553240, guid: 19ff913e6d2ed894f966f650b651520c, type: 3}
+  destroyParticles: {fileID: 613803761119119918, guid: 51adbf39176a94b409e16d4f6cf323c1, type: 3}
+  firedParticles: {fileID: 1082341980966695435, guid: 27b48a6341d6bdb4ea7892fad1e81b80, type: 3}
   lerpDuration: 1.45
 --- !u!114 &1345219480074160104
 MonoBehaviour:
