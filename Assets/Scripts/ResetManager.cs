@@ -40,15 +40,17 @@ public class ResetManager : MonoBehaviour
         }
     }
 
-    private void ResetBall()
+    void ResetBall()
     {
-        Ball ball = FindObjectOfType<Ball>();
-        if (ball != null)
+
+        // Find the active Ball instance and initiate the lerp reset
+        Ball activeBall = FindObjectOfType<Ball>();
+        if (activeBall != null)
         {
-            Destroy(ball.gameObject);  // Destroy the current ball if it exists
-            Ball.IsBallActive = false;  // Reset the ball state
+            StartCoroutine(activeBall.DestroyAfterLerp());
         }
     }
+
 
     private void ResetScene()
     {

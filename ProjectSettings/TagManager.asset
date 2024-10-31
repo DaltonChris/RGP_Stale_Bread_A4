@@ -9,6 +9,9 @@ TagManager:
   - Destroy
   - ShootTrail
   - Shape
+  - GlobalVol
+  - Obstacle
+  - CineCam
   layers:
   - Default
   - TransparentFX
