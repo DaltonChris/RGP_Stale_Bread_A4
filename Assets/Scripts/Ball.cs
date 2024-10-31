@@ -15,6 +15,7 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject shootTrail;
     private GameObject existingTrail;
+    public Gradient prevTrailGradient;
 
     // Volume & componets values
     Volume globalVol;
@@ -48,8 +49,9 @@ public class Ball : MonoBehaviour
         existingTrail = GameObject.FindWithTag("ShootTrail");//Check if a trail is already in the scene
         if(existingTrail != null)
         {
-            existingTrail.GetComponent<TrailRenderer>().startColor = Color.black;
-            existingTrail.GetComponent<TrailRenderer>().endColor = Color.black;
+            TrailRenderer trailComponent = existingTrail.GetComponent<TrailRenderer>();
+            trailComponent.colorGradient = prevTrailGradient;
+            trailComponent.sortingOrder = -1;
         }
 
         // Access components in the Volume
