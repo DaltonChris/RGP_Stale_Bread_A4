@@ -60,7 +60,6 @@ public class Draggable : MonoBehaviour
             if (!isDragging)
             {
                 HoverEffect();
-                isDragging = true;
                 offset = transform.position - mousePosition;
 
                 // Set chromatic aberration intensity to highlight dragging
