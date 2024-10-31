@@ -54,54 +54,40 @@ public class Draggable : MonoBehaviour
         Vector3 mousePosition = GetMouseWorldPosition();
         Collider2D hit = Physics2D.OverlapPoint(mousePosition);
 
-        if (hit != null && hit.transform == transform)
+        // Update hover status
+        isHovering = (hit != null && hit.transform == transform);
+        if (isHovering && !isDragging)
         {
-            isHovering = true;
-            if (!isDragging)
-            {
-                HoverEffect();
-                offset = transform.position - mousePosition;
-
-                // Set chromatic aberration intensity to highlight dragging
-                if (chromaticAberration != null)
-                {
-                    chromaticAberration.intensity.Override(chromaticValueOnDrag);
-                }
-            }
+            HoverEffect();
+            offset = transform.position - mousePosition;
         }
-        else
+        else if (!isHovering && !isDragging)
         {
-            isHovering = false;
-            if (!isDragging)
-            {
-                EndHover();
-            }
+            EndHover();
         }
-
+        // Begin drag
         if (Input.GetMouseButtonDown(0) && isHovering)
         {
             isDragging = true;
-            offset = transform.position - mousePosition;
+            // Highlight dragging with chromatic aberration effect
+            chromaticAberration?.intensity.Override(chromaticValueOnDrag);
             ClickEffect();
         }
-
-        if (Input.GetMouseButtonUp(0))
+        // End drag
+        if (Input.GetMouseButtonUp(0) && isDragging)
         {
             isDragging = false;
             DropEffect();
-            // reSet chromatic aberration
-            if (chromaticAberration != null)
-            {
-                chromaticAberration.intensity.Override(chromaticValueDefault);
-            }
+            chromaticAberration?.intensity.Override(chromaticValueDefault);  // Reset effect
         }
-
+        // Move the object while dragging
         if (isDragging)
         {
             Vector3 targetPosition = GetMouseWorldPosition() + offset;
             MoveTowardsTarget(targetPosition);
         }
     }
+
 
     // Handles smooth movement and collision handling
     private void MoveTowardsTarget(Vector3 targetPosition)
