@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 163607983}
   - component: {fileID: 163607982}
   m_Layer: 5
-  m_Name: Image_1
+  m_Name: UI EDGE Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,7 +1331,7 @@ GameObject:
   - component: {fileID: 770583863}
   - component: {fileID: 770583862}
   m_Layer: 5
-  m_Name: Image_2
+  m_Name: UI EDGE Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 1064515580}
   - component: {fileID: 1064515579}
   m_Layer: 5
-  m_Name: Image
+  m_Name: UI EDGE Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 1381131956}
   - component: {fileID: 1381131955}
   m_Layer: 5
-  m_Name: Image_3
+  m_Name: UI EDGE Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
