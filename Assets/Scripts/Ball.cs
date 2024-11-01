@@ -118,7 +118,8 @@ public class Ball : MonoBehaviour
             DepthOfField.focalLength.Override(dofHitValue);
         }
         
-        StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
         //Destroy(gameObject);
     }
 
