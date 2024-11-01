@@ -54,7 +54,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 218541e50e3744041a88db7b7f01fe93, type: 2}
+  m_Material: {fileID: 6200000, guid: 2f1d4d687ee47f148aa924e0ccf3962c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -64,7 +64,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &1014420031898354153
 CircleCollider2D:
   m_ObjectHideFlags: 0
