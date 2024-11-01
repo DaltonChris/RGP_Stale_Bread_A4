@@ -15,7 +15,7 @@ public class Shooter : MonoBehaviour
 
     private bool ballActive = false;   // Track if a ball is active
     public float recoilDistance = 0.2f; //  recoil distance
-    public float recoilDuration = 0.1f; //  recoil effect duratuin
+    public float recoilDuration = 0.05f; //  recoil effect duratuin
 
     void Update()
     {
