@@ -37,6 +37,10 @@ public class Ball : MonoBehaviour
     CinemachineBasicMultiChannelPerlin BasicMultiChannelPerlin;
     float shakeActiveValue = 1.2f;
 
+    GameObject resetUI;
+    float resetVector = 0.01f;
+    float lowVelTimer = 0f; // Timer for low velocity
+    float lowVelDuration = 1.95f;
 
     void Start()
     {
@@ -48,6 +52,8 @@ public class Ball : MonoBehaviour
             BasicMultiChannelPerlin = cinCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         BasicMultiChannelPerlin.m_FrequencyGain = 0f;
+
+        resetUI = ResetManager.Instance.resetUI;
 
         globalVol = GameObject.FindWithTag("GlobalVol").GetComponent<Volume>();
 
@@ -65,6 +71,27 @@ public class Ball : MonoBehaviour
 
         if (globalVol.profile.TryGet(out DepthOfField))
             DepthOfField.focalLength.Override(dofDefValue);
+    }
+    private void Update()
+    {
+        // Check if ball is below velocity and active
+        if (rb.velocity.magnitude < resetVector && IsBallActive)
+        {
+            // Increment the low velocity timer
+            lowVelTimer += Time.deltaTime;
+
+            if (lowVelTimer >= lowVelDuration && resetUI != null)
+            {
+                if (this.gameObject.activeInHierarchy)
+                    StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
+                resetUI.SetActive(true);
+            }
+        }
+        else
+        {
+            // Reset the timer
+            lowVelTimer = 0f;
+        }
     }
 
     private void OnBecameInvisible()
@@ -92,7 +119,8 @@ public class Ball : MonoBehaviour
             DepthOfField.focalLength.Override(dofHitValue);
         }
         
-        StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
+        if (this.gameObject.activeInHierarchy)
+            StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
         //Destroy(gameObject);
     }
 

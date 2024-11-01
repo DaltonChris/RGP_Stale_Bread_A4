@@ -12,6 +12,7 @@ TagManager:
   - GlobalVol
   - Obstacle
   - CineCam
+  - ResetUI
   layers:
   - Default
   - TransparentFX

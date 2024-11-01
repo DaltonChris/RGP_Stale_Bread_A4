@@ -12,9 +12,11 @@ public class Shooter : MonoBehaviour
     public float maxLaunchForce = 15f; // Maximum force for launch
     public float minAngle = -80f;      // Minimum rotation angle
     public float maxAngle = 80f;       // Maximum rotation angle
-    public Light2D globalLight;        // Global light componet in scene
+    public Light2D globalLight;        // Global light component in scene
 
     private bool ballActive = false;   // Track if a ball is active
+    public float recoilDistance = 0.2f; //  recoil distance
+    public float recoilDuration = 0.05f; //  recoil effect duratuin
 
     void Update()
     {
@@ -70,11 +72,39 @@ public class Shooter : MonoBehaviour
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         rb.AddForce(launchDirection * maxLaunchForce, ForceMode2D.Impulse);
 
+        //Add shoot particles
         Instantiate(shootParticles, spawnPoint);
+        // start recoil effect
+        StartCoroutine(Recoil(launchDirection));
 
         // Subscribe to the reset event
         Ball ballScript = ball.GetComponent<Ball>();
         ballScript.OnBallReset += ResetBall;
+    }
+
+    IEnumerator Recoil(Vector2 launchDirection)
+    {
+        Vector3 originalPosition = transform.position;
+        Vector3 recoilPosition = originalPosition - (Vector3)(launchDirection * recoilDistance);
+
+        //recoil position
+        float elapsedTime = 0f;
+        while (elapsedTime < recoilDuration)
+        {
+            transform.position = Vector3.Lerp(originalPosition, recoilPosition, elapsedTime / recoilDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Return to original position
+        elapsedTime = 0f;
+        while (elapsedTime < recoilDuration)
+        {
+            transform.position = Vector3.Lerp(recoilPosition, originalPosition, elapsedTime / recoilDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = originalPosition;
     }
 
     void DrawTrajectory(Vector2 startPoint, Vector2 initialVelocity)
