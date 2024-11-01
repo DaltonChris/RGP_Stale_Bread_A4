@@ -37,10 +37,10 @@ public class Ball : MonoBehaviour
     CinemachineBasicMultiChannelPerlin BasicMultiChannelPerlin;
     float shakeActiveValue = 1.2f;
 
-    public GameObject resetUI;
+    GameObject resetUI;
     float resetVector = 0.01f;
-    private float lowVelTimer = 0f; // Timer for low velocity
-    public float lowVelDuration = 3.0f;
+    float lowVelTimer = 0f; // Timer for low velocity
+    float lowVelDuration = 2.25f;
 
     void Start()
     {
@@ -83,6 +83,8 @@ public class Ball : MonoBehaviour
 
             if (lowVelTimer >= lowVelDuration && resetUI != null)
             {
+                if (this.gameObject.activeInHierarchy)
+                    StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
                 resetUI.SetActive(true);
             }
         }
