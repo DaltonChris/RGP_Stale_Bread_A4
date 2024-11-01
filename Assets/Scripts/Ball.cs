@@ -84,7 +84,7 @@ public class Ball : MonoBehaviour
             if (lowVelTimer >= lowVelDuration && resetUI != null)
             {
                 if (this.gameObject.activeInHierarchy)
-                    StartCoroutine(DestroyAfterLerp()); // Start lerp coroutine
+                    OnBecameInvisible(); // Start lerp coroutine
                 resetUI.SetActive(true);
             }
         }

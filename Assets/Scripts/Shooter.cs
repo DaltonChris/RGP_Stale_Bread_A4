@@ -13,13 +13,14 @@ public class Shooter : MonoBehaviour
     public float maxAngle = 80f;       // Maximum rotation angle
     public Light2D globalLight;        // Global light component in scene
 
-    private bool ballActive = false;   // Track if a ball is active
+    [SerializeField]private bool ballActive = false;   // Track if a ball is active
     public float recoilDistance = 0.2f; //  recoil distance
     public float recoilDuration = 0.05f; //  recoil effect duratuin
 
     void Update()
     {
         RotateToFaceMouse();  // Rotate player towards mouse with clamped angles
+        
 
         if (!ballActive)
         {
@@ -27,7 +28,9 @@ public class Shooter : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                LaunchBall();  // Launch the ball when the mouse is clicked
+                if (ResetManager.Instance.resetUI.activeInHierarchy)
+                { ResetManager.Instance.resetUI.SetActive(false);
+                }else{ LaunchBall(); }// Launch the ball when the mouse is clicked
             }
         }
     }

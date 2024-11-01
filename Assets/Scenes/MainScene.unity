@@ -1020,14 +1020,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 296604034}
     m_Modifications:
-    - target: {fileID: 228744976596900605, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: m_Color.b
-      value: 0.105882354
-      objectReference: {fileID: 0}
-    - target: {fileID: 1120354073927237517, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: isNegativeRotate
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1368419150805943131, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
       propertyPath: m_Name
       value: Ball Destroyer Large - Rotate (1)
@@ -3561,21 +3553,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 296604034}
     m_Modifications:
-    - target: {fileID: 1120354073927237517, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: Max_rotationMultiplier
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1120354073927237517, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: Min_rotationMultiplier
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1368419150805943131, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
       propertyPath: m_Name
       value: Ball Destroyer Large - Rotate
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368419150805943131, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6614860506855421490, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3616,10 +3596,6 @@ PrefabInstance:
     - target: {fileID: 6614860506855421490, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6929658360968967331, guid: f7327fbbbcc3c574faa65bd131293f00, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

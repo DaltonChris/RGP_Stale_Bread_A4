@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.107709885, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.105882354, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,9 +178,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f4dd536f1fd7a49a35122fec9a133b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min_rotationMultiplier: 7.5
-  Max_rotationMultiplier: 9.95
-  isNegativeRotate: 1
+  Min_rotationMultiplier: 9
+  Max_rotationMultiplier: 11
+  isNegativeRotate: 0
 --- !u!1 &6929658360968967331
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8065818683134589050}
   - component: {fileID: 4270865894738838836}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
