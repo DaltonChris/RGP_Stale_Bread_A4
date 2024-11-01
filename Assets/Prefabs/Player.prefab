@@ -102,6 +102,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 7378696518204736856, guid: 6bc348672fa251c40a9966137913e627, type: 3}
   spawnPoint: {fileID: 3233089905767127467}
   lineRenderer: {fileID: 7350971086954432330}
+  shootParticles: {fileID: 1082341980966695435, guid: 27b48a6341d6bdb4ea7892fad1e81b80, type: 3}
   maxLaunchForce: 10
   minAngle: -85
   maxAngle: 85

@@ -8,6 +8,7 @@ public class Shooter : MonoBehaviour
     public GameObject ballPrefab;      // Ball to be launched
     public Transform spawnPoint;       // The spawn location at the top of the player
     public LineRenderer lineRenderer;  // Line to show trajectory
+    public GameObject shootParticles;  // Particles to fire when shooting
     public float maxLaunchForce = 15f; // Maximum force for launch
     public float minAngle = -80f;      // Minimum rotation angle
     public float maxAngle = 80f;       // Maximum rotation angle
@@ -74,6 +75,8 @@ public class Shooter : MonoBehaviour
         Rigidbody2D rb = ball.GetComponent<Rigidbody2D>();
         rb.AddForce(launchDirection * maxLaunchForce, ForceMode2D.Impulse);
 
+        //Add shoot particles
+        Instantiate(shootParticles, spawnPoint.transform.position, Quaternion.identity);
         // start recoil effect
         StartCoroutine(Recoil(launchDirection));
 
