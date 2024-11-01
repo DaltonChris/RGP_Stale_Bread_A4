@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour
     GameObject resetUI;
     float resetVector = 0.01f;
     float lowVelTimer = 0f; // Timer for low velocity
-    float lowVelDuration = 2.25f;
+    float lowVelDuration = 1.95f;
 
     void Start()
     {
