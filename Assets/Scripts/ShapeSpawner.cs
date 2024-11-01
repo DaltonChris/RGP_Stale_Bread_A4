@@ -9,7 +9,7 @@ public class ShapeSpawner : MonoBehaviour
     public float spawnPadding = 0.5f;     // Space between shapes to prevent overlap
     public Transform spawnSpace;          // Area where to spawn
     public Vector2 spawnArea;             // w and h of spawn space
-    private BoxCollider2D spawnAreaCollider; 
+    private BoxCollider2D spawnAreaCollider;
 
     private List<GameObject> spawnedShapes = new List<GameObject>();
 
@@ -24,14 +24,14 @@ public class ShapeSpawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            // Check if the spawn area is empty before respawning shapes
-            if (IsSpawnAreaEmpty() && spawnedShapes.Count <= 0)
+            // Only spawn shapes if the spawn area is empty
+            if (IsSpawnAreaEmpty())
             {
                 SpawnShapes();
             }
             else
             {
-                Debug.Log("Spawn not empty");
+                Debug.Log("Spawn area is not empty.");
             }
         }
     }
