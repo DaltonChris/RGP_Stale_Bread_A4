@@ -30,11 +30,12 @@ public class Shooter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (ResetManager.Instance.resetUI.activeInHierarchy)
-                { ResetManager.Instance.resetUI.SetActive(false);
+                { StartCoroutine(ResetManager.Instance.ResetFadeOut());
                 }else{ LaunchBall(); }// Launch the ball when the mouse is clicked
             }
         }
     }
+
 
     void RotateToFaceMouse()
     {

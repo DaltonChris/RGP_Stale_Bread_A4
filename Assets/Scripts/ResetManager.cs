@@ -9,6 +9,7 @@ public class ResetManager : MonoBehaviour
     private float holdTime = 2f;  // How long R must be held to reset the scene
     private float holdTimer = 0f;
     public GameObject resetUI;
+    Animator resetAnimator;
     public static ResetManager Instance;
 
 
@@ -29,6 +30,7 @@ public class ResetManager : MonoBehaviour
         // Find and cache the resetUI at the start, even if disabled
         resetUI = GameObject.FindWithTag("ResetUI");
         if (resetUI != null)
+            resetAnimator = resetUI.GetComponent<Animator>();
             resetUI.SetActive(false); // Ensure it's disabled initially
     }
     private void Start()
@@ -65,8 +67,9 @@ public class ResetManager : MonoBehaviour
 
     void ResetBall()
     {
-        if(resetUI != null)
-            if(resetUI.activeInHierarchy)resetUI.SetActive(false);
+        if (resetUI != null)
+            if (resetAnimator != null)
+                StartCoroutine(ResetFadeOut());
         // Find the active Ball instance and initiate the lerp reset
         Ball activeBall = FindObjectOfType<Ball>();
         if (activeBall != null)
@@ -87,5 +90,12 @@ public class ResetManager : MonoBehaviour
         }
 
         ResetBall();  // Also reset the ball during scene reset
+    }
+
+    public IEnumerator ResetFadeOut()
+    {
+        resetAnimator.SetTrigger("Fade");
+        yield return new WaitForSeconds(1f);
+        resetUI.SetActive(false);
     }
 }
