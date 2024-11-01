@@ -73,7 +73,7 @@ public class Shooter : MonoBehaviour
         rb.AddForce(launchDirection * maxLaunchForce, ForceMode2D.Impulse);
 
         //Add shoot particles
-        Instantiate(shootParticles, spawnPoint);
+        Instantiate(shootParticles, spawnPoint.transform.position, Quaternion.identity);
         // start recoil effect
         StartCoroutine(Recoil(launchDirection));
 
