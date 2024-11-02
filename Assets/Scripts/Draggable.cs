@@ -6,16 +6,20 @@ using UnityEngine.Rendering.Universal;
 
 public class Draggable : MonoBehaviour
 {
+    
     private bool isDragging = false;
     private bool isHovering = false;
     private Vector3 offset;
     private Rigidbody2D rb;
     private Collider2D col;
 
+    [Header("Movement Settings")]
     public float dragSpeed = 10f;  // Speed for smooth movement
     public float rotationSpeed = 100f;  // Speed of rotation when using arrow keys
     public float skinWidth = 0.01f;         // Extra padding to avoid clipping
     public float collisionBuffer = 0.001f;   // Small buffer to prevent jitter
+
+    [Header("VFX")]
     public float chromaticValueOnDrag = 0.25f;  // Intensity when dragging
     public float chromaticValueDefault = 0f;   // Default intensity when not dragging
 
@@ -27,6 +31,8 @@ public class Draggable : MonoBehaviour
     public float HoverMultiply = 1.2f;   // How big to make hover sprite when hovering
     public Color DragColour = Color.white;  // Colour tint when dragging
     public float DragMultiply = 1.5f; // How big to make the hover sprite when dragging
+
+    [Header("SFX")]
     public AudioClip HoverSFX;
     public AudioClip EndHoverSFX;
     public AudioClip ClickSFX;
