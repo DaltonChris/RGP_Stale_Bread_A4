@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragSpeed: 3
+  rotationSpeed: 100
   skinWidth: 0.1
   collisionBuffer: 0.001
   chromaticValueOnDrag: 0.25
@@ -184,8 +185,8 @@ MonoBehaviour:
   DragMultiply: 1.5
   HoverSFX: {fileID: 0}
   EndHoverSFX: {fileID: 0}
-  ClickSFX: {fileID: 0}
-  DropSFX: {fileID: 0}
+  ClickSFX: {fileID: 8300000, guid: 145a8c8f657368c40beb5140c2eacaec, type: 3}
+  DropSFX: {fileID: 8300000, guid: 43988a6f6d5672444988f9291a0ec576, type: 3}
 --- !u!1001 &3920965181914234259
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -199,6 +199,26 @@ MonoBehaviour:
   hitParticles: {fileID: 203675280561553240, guid: 19ff913e6d2ed894f966f650b651520c, type: 3}
   destroyParticles: {fileID: 613803761119119918, guid: 51adbf39176a94b409e16d4f6cf323c1, type: 3}
   firedParticles: {fileID: 1082341980966695435, guid: 27b48a6341d6bdb4ea7892fad1e81b80, type: 3}
+  shotSFX: {fileID: 8300000, guid: 9443eefd0a67bf649a1221633a87f70f, type: 3}
+  hitSFX:
+  - {fileID: 8300000, guid: f20e05c17f13ce44ab749a0347a77c9f, type: 3}
+  - {fileID: 8300000, guid: a3f6bdb4d7d0624469d5d336616aa6b9, type: 3}
+  - {fileID: 8300000, guid: f5e984d2308dcf54e943f700c2ecb5c5, type: 3}
+  - {fileID: 8300000, guid: e1bafd6678d644c4aa0ce04ffe53a1a2, type: 3}
+  - {fileID: 8300000, guid: 1cf13b8935a71e14395c08dac2b43c3a, type: 3}
+  - {fileID: 8300000, guid: d3e8cfd7ca0e5de4aa4434080bdbb35c, type: 3}
+  - {fileID: 8300000, guid: 2771b7bfcc16158469b68190e2925bd7, type: 3}
+  - {fileID: 8300000, guid: 907961b13ca61ad4c9ead9a3b9f14b13, type: 3}
+  - {fileID: 8300000, guid: aa947bc1c1888154cb03291ac7719b4c, type: 3}
+  - {fileID: 8300000, guid: faccf4aba8c9e1b418ac90b61ebd6858, type: 3}
+  - {fileID: 8300000, guid: c16676e5b9deaf84e96327cd849b577d, type: 3}
+  shatterSFX:
+  - {fileID: 8300000, guid: 87c7351301abd1f44b56f7166961f570, type: 3}
+  - {fileID: 8300000, guid: 47db3e819e05ce24f86b143c9222e940, type: 3}
+  - {fileID: 8300000, guid: 60b51f27210bc7244b01c853e77dcfaa, type: 3}
+  - {fileID: 8300000, guid: 3e175c19e1cab0842b3281a51198a401, type: 3}
+  - {fileID: 8300000, guid: 928921630dad8eb43811bedd2d3f2e53, type: 3}
+  - {fileID: 8300000, guid: 7bd2935862d4e9a45a9c8b06c59b129d, type: 3}
   lerpDuration: 1.45
 --- !u!114 &1345219480074160104
 MonoBehaviour:
