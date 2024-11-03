@@ -21,7 +21,7 @@ public class Draggable : MonoBehaviour
 
     [Header("VFX")]
     public float chromaticValueOnDrag = 0.25f;  // Intensity when dragging
-    public float chromaticValueDefault = 0f;   // Default intensity when not dragging
+    float chromaticValueDefault = 0f;   // Default intensity when not dragging
 
     Volume globalVol;
     ChromaticAberration chromaticAberration;

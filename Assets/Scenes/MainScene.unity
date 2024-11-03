@@ -2281,13 +2281,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoveableBoost_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6575072405880541302, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
+      propertyPath: DragMultiply
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575072405880541302, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
+      propertyPath: HoverMultiply
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575072405880541302, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
+      propertyPath: chromaticValueOnDrag
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625688911911415313, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
+      propertyPath: pushForce
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7
+      value: -4.63
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.49
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2295,7 +2311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.48877358
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2307,7 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.8724107
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2319,7 +2335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 121.48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3211,12 +3227,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
       propertyPath: shapePrefabs.Array.size
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: shapePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 246516581824140368, guid: 629bb14caa79b5c478a0c88a97d6e826, type: 3}
     - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
       propertyPath: shapePrefabs.Array.data[2]
       value: 
+      objectReference: {fileID: 2303555822017041318, guid: 5be81c0ea5b9c644c85d53a4e288e9e6, type: 3}
+    - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: shapePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2303555822017041318, guid: 5be81c0ea5b9c644c85d53a4e288e9e6, type: 3}
+    - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: shapePrefabs.Array.data[4]
+      value: 
       objectReference: {fileID: 246516581824140368, guid: 45e55419f97a688439d0430e74a78547, type: 3}
+    - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: shapePrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 246516581824140368, guid: 45e55419f97a688439d0430e74a78547, type: 3}
+    - target: {fileID: 5049869513655836106, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
+      propertyPath: shapePrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 2783323162225694009, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
     - target: {fileID: 8349480048913528289, guid: 42c1eaa66ffcd014fa2549dbb8763fdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

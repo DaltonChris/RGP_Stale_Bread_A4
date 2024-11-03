@@ -50,6 +50,11 @@ public class Ball : MonoBehaviour
     float lowVelTimer = 0f; // Timer for low velocity
     float lowVelDuration = 1.95f;
 
+    [Header("VFX")]
+    public float chromaticValueOnHit = 0f;  // Intensity when dragging
+    float chromaticValueDefault = 0f;   // Default intensity when not dragging
+    ChromaticAberration chromaticAberration;
+
 
     void Start()
     {
@@ -82,6 +87,10 @@ public class Ball : MonoBehaviour
 
         if (globalVol.profile.TryGet(out DepthOfField))
             DepthOfField.focalLength.Override(dofDefValue);
+
+        // Access the Chromatic Aberration component in the Volume
+        if (globalVol.profile.TryGet(out chromaticAberration))
+            chromaticAberration.intensity.Override(chromaticValueDefault);
     }
     private void Update()
     {
@@ -170,6 +179,7 @@ public class Ball : MonoBehaviour
     {
         DisabledInteractions();
         yield return StartCoroutine(BallDestoryedLerpDefault());
+        chromaticAberration?.intensity.Override(chromaticValueDefault);
         Destroy(gameObject);
     }
     /// <summary>
@@ -183,6 +193,7 @@ public class Ball : MonoBehaviour
         // Initial values at the start of the lerp
         float startSplitToning = splitHitValue;
         float startDepthOfField = dofHitValue;
+        float startChromatic = chromaticValueOnHit;
 
         while (elapsedTime < lerpDuration)
         {
@@ -190,6 +201,7 @@ public class Ball : MonoBehaviour
             // Calculate lerped values
             float lerpSplitToning = Mathf.Lerp(startSplitToning, splitDefValue, elapsedTime / lerpDuration);
             float lerpDepthOfField = Mathf.Lerp(startDepthOfField, dofDefValue, elapsedTime / lerpDuration);
+            float lerpChromatic = Mathf.Lerp(startChromatic, chromaticValueDefault, elapsedTime / lerpDuration);
 
             // Apply the lerped values
             if (SplitToning != null)
@@ -199,6 +211,10 @@ public class Ball : MonoBehaviour
             if (DepthOfField != null)
             {
                 DepthOfField.focalLength.Override(lerpDepthOfField);
+            }
+            if (chromaticAberration != null)
+            {
+                chromaticAberration.intensity.Override(lerpChromatic);
             }
 
             elapsedTime += Time.deltaTime; // Update elapsed time
@@ -218,6 +234,10 @@ public class Ball : MonoBehaviour
         {
             BasicMultiChannelPerlin.m_FrequencyGain = 0f;
         }
+        if (chromaticAberration.intensity != 0f)
+        {
+            chromaticAberration.intensity.Override(0);
+        }
     }
     /// <summary>
     /// Method to disable visual componets and collisons to be used delaying obj destroy
@@ -228,6 +248,7 @@ public class Ball : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         BackObj.SetActive(false);
+        chromaticAberration?.intensity.Override(chromaticValueOnHit);
     }
 
     void CompleteLevel()

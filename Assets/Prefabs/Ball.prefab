@@ -220,6 +220,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 928921630dad8eb43811bedd2d3f2e53, type: 3}
   - {fileID: 8300000, guid: 7bd2935862d4e9a45a9c8b06c59b129d, type: 3}
   lerpDuration: 1.45
+  chromaticValueOnHit: 2.5
 --- !u!114 &1345219480074160104
 MonoBehaviour:
   m_ObjectHideFlags: 0
