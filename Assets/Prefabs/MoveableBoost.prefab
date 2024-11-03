@@ -134,7 +134,6 @@ MonoBehaviour:
   skinWidth: 0.1
   collisionBuffer: 0.001
   chromaticValueOnDrag: 0.25
-  chromaticValueDefault: 0
   HoverSprite: {fileID: 5148935275819536947}
   HoverColour: {r: 0, g: 1, b: 0.22279811, a: 0.019607844}
   HoverMultiply: 1.2
@@ -156,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9ce4eacedbc4d4ead2c49e26cb772c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 10
+  pushForce: 20
 --- !u!70 &8499488335911182203
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
