@@ -154,6 +154,14 @@ public class Ball : MonoBehaviour
             
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Flag"))
+        {
+            CompleteLevel();
+        }
+
+    }
     /// <summary>
     /// Disable ball interactions, lerp for volume effects, destory once complete
     /// </summary>
@@ -220,5 +228,10 @@ public class Ball : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         BackObj.SetActive(false);
+    }
+
+    void CompleteLevel()
+    {
+        Debug.Log("Level Completed");
     }
 }

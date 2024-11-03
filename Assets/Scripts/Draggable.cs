@@ -110,11 +110,11 @@ public class Draggable : MonoBehaviour
     // Handles rotation using arrow keys
     private void HandleRotation()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.Rotate(Vector3.back * rotationSpeed * Time.deltaTime);
         }
