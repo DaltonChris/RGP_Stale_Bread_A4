@@ -133,12 +133,12 @@ MonoBehaviour:
   rotationSpeed: 100
   skinWidth: 0.1
   collisionBuffer: 0.001
-  chromaticValueOnDrag: 0.35
+  chromaticValueOnDrag: 0.25
   HoverSprite: {fileID: 5148935275819536947}
   HoverColour: {r: 0, g: 1, b: 0.22279811, a: 0.019607844}
   HoverMultiply: 1.2
   DragColour: {r: 0, g: 0.34901962, b: 0.009738047, a: 1}
-  DragMultiply: 1.3
+  DragMultiply: 1.5
   HoverSFX: {fileID: 0}
   EndHoverSFX: {fileID: 0}
   ClickSFX: {fileID: 8300000, guid: 145a8c8f657368c40beb5140c2eacaec, type: 3}
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9ce4eacedbc4d4ead2c49e26cb772c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pushForce: 25
+  pushForce: 20
 --- !u!70 &8499488335911182203
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

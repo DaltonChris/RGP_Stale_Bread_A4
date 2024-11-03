@@ -18,6 +18,8 @@ public class DraggableBoost : MonoBehaviour
                 // Calculate the force direction 
                 Vector2 forceDirection = -transform.right * pushForce;
 
+                //Cancel out the current velocity on the ball
+                ballRigidbody.velocity = new Vector2(0,0);
                 // Apply force 
                 ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
             }
