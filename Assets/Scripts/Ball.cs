@@ -14,13 +14,21 @@ public class Ball : MonoBehaviour
 
     private Rigidbody2D rb;
     private CircleCollider2D col2d;
+
+    [Header("Shoot Trail")]
     public GameObject shootTrail;
     private GameObject existingTrail;
     public Gradient prevTrailGradient;
 
+    [Header("Particles")]
     public GameObject hitParticles;
     public GameObject destroyParticles;
     public GameObject firedParticles;
+
+    [Header("SFX")]
+    public AudioClip shotSFX;
+    public AudioClip[] hitSFX;
+    public AudioClip[] shatterSFX;
 
     // Volume & componets values
     Volume globalVol;
@@ -42,10 +50,13 @@ public class Ball : MonoBehaviour
     float lowVelTimer = 0f; // Timer for low velocity
     float lowVelDuration = 1.95f;
 
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         IsBallActive = true;  // Sets ball as active
+
+        SfxManager.Instance.PlaySfx(shotSFX);
 
         cinCam = GameObject.FindWithTag("CineCam").GetComponent<CinemachineVirtualCamera>();
         if (cinCam != null)
@@ -97,11 +108,14 @@ public class Ball : MonoBehaviour
     private void OnBecameInvisible()
     {
         Instantiate(destroyParticles, transform.position, Quaternion.identity);
+        int randSFX = UnityEngine.Random.Range(0, shatterSFX.Length);
+        SfxManager.Instance.PlaySfx(shatterSFX[randSFX]);
 
         // Notify the shooter to reset when the ball leaves the screen
         OnBallReset?.Invoke();
         
         IsBallActive = false; // Sets ball as inactive
+
 
         if(existingTrail != null)
         {
@@ -134,6 +148,10 @@ public class Ball : MonoBehaviour
         else
         {
             Instantiate(hitParticles, transform.position, Quaternion.identity);
+            int randSFX = UnityEngine.Random.Range(0, hitSFX.Length); //Get random hit sfx clip
+            float velocityVolume = rb.velocity.magnitude/15.0f; //Map the velocity to a value roughly between 0 - 1 to get the volume
+            SfxManager.Instance.PlaySfx(hitSFX[randSFX], velocityVolume);
+            
         }
     }
     /// <summary>

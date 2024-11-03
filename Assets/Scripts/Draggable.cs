@@ -189,11 +189,13 @@ public class Draggable : MonoBehaviour
     {
         HoverSprite.transform.localScale = new Vector3(1, 1, 1) * DragMultiply;
         HoverSprite.GetComponent<SpriteRenderer>().color = DragColour;
+        SfxManager.Instance.PlaySfx(ClickSFX);
     }
 
     private void DropEffect()
     {
         HoverSprite.GetComponent<SpriteRenderer>().color = HoverColour;
+        SfxManager.Instance.PlaySfx(DropSFX);
         if (isHovering)
         {
             HoverEffect();
