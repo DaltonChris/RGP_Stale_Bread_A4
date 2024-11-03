@@ -30,6 +30,8 @@ public class Ball : MonoBehaviour
     public AudioClip[] hitSFX;
     public AudioClip[] shatterSFX;
 
+    private int hitNumber = 10;
+
     // Volume & componets values
     Volume globalVol;
     SplitToning SplitToning;
@@ -120,18 +122,17 @@ public class Ball : MonoBehaviour
         int randSFX = UnityEngine.Random.Range(0, shatterSFX.Length);
         SfxManager.Instance.PlaySfx(shatterSFX[randSFX]);
 
-        // Notify the shooter to reset when the ball leaves the screen
-        OnBallReset?.Invoke();
-        
-        IsBallActive = false; // Sets ball as inactive
-
-
         if(existingTrail != null)
         {
             Destroy(existingTrail);//If it is, destroy it
         }
         shootTrail.gameObject.tag = "ShootTrail";//Add tag to new one so it can be found by the next ball
         shootTrail.transform.parent = null;//Unparent so it doesn't get destroyed
+
+        // Notify the shooter to reset when the ball leaves the screen
+        OnBallReset?.Invoke();
+        
+        IsBallActive = false; // Sets ball as inactive
 
         if(SplitToning != null)
         {
@@ -157,9 +158,11 @@ public class Ball : MonoBehaviour
         else
         {
             Instantiate(hitParticles, transform.position, Quaternion.identity);
-            int randSFX = UnityEngine.Random.Range(0, hitSFX.Length); //Get random hit sfx clip
+            //int randSFX = UnityEngine.Random.Range(0, hitSFX.Length); //Get random hit sfx clip
             float velocityVolume = rb.velocity.magnitude/15.0f; //Map the velocity to a value roughly between 0 - 1 to get the volume
-            SfxManager.Instance.PlaySfx(hitSFX[randSFX], velocityVolume);
+            velocityVolume = Mathf.Clamp01(velocityVolume);
+            int sfxNumber = Mathf.FloorToInt(velocityVolume*10);
+            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume);
             
         }
     }
