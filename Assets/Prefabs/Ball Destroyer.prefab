@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7764327244701399704}
@@ -74,9 +74,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
-  m_Color: {r: 0.04843396, g: 0.0027368313, b: 0.0027368313, a: 0.6862745}
+  m_Color: {r: 0.14180106, g: 0.0040408177, b: 0.0040408177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   Min_rotationMultiplier: 21
   Max_rotationMultiplier: 24
   isNegativeRotate: 0
+  isRandomRotate: 0
 --- !u!50 &2078527560618835672
 Rigidbody2D:
   serializedVersion: 4
@@ -293,7 +294,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.105882354, a: 0.5686275}
+  m_Color: {r: 0.6553199, g: 0, b: 0.069387004, a: 0.32941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -318,6 +319,7 @@ MonoBehaviour:
   Min_rotationMultiplier: 4.5
   Max_rotationMultiplier: 8
   isNegativeRotate: 1
+  isRandomRotate: 0
 --- !u!60 &652003819255188743
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -412,9 +414,9 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.855
-  m_Color: {r: 0.41256553, g: 0.027164595, b: 0.08477611, a: 1}
-  m_Intensity: 1
-  m_LightVolumeIntensity: 0.05
+  m_Color: {r: 0.21649474, g: 0, b: 0.034636337, a: 1}
+  m_Intensity: 2
+  m_LightVolumeIntensity: 0.5
   m_LightVolumeIntensityEnabled: 1
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
@@ -476,7 +478,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.15, y: 1.15, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7764327244701399704}
@@ -521,9 +523,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
-  m_Sprite: {fileID: -2135585597343286014, guid: eed45a33cd08446c8b88325cf82fc52f, type: 3}
-  m_Color: {r: 0.25384164, g: 0, b: 0, a: 0.60784316}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.6862745}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -548,6 +550,7 @@ MonoBehaviour:
   Min_rotationMultiplier: 25
   Max_rotationMultiplier: 30
   isNegativeRotate: 1
+  isRandomRotate: 0
 --- !u!50 &3078114658291718421
 Rigidbody2D:
   serializedVersion: 4
