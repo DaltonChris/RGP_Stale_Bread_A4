@@ -5,6 +5,7 @@ using UnityEngine;
 public class DraggableBoost : MonoBehaviour
 {
     public float pushForce = 10f;  // strength of the push
+    public bool isWeakBooster = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,13 +16,24 @@ public class DraggableBoost : MonoBehaviour
 
             if (ballRigidbody != null)
             {
-                // Calculate the force direction 
-                Vector2 forceDirection = -transform.right * pushForce;
+                if (!isWeakBooster)
+                {
+                    // Calculate the force direction 
+                    Vector2 forceDirection = -transform.right * pushForce;
 
-                //Cancel out the current velocity on the ball
-                ballRigidbody.velocity = new Vector2(0,0);
-                // Apply force 
-                ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
+                    //Cancel out the current velocity on the ball
+                    ballRigidbody.velocity = new Vector2(0, 0);
+                    // Apply force 
+                    ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
+                }
+                else
+                {
+                    // Calculate the force direction 
+                    Vector2 forceDirection = -transform.right * pushForce;
+
+                    // Apply force 
+                    ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
+                }
             }
         }
     }
