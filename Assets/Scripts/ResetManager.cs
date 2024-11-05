@@ -9,7 +9,9 @@ public class ResetManager : MonoBehaviour
     private float holdTime = 2f;  // How long R must be held to reset the scene
     private float holdTimer = 0f;
     public GameObject resetUI;
+    public GameObject victoryUI;
     Animator resetAnimator;
+    Animator victoryAnimator;
     public static ResetManager Instance;
 
 
@@ -32,6 +34,13 @@ public class ResetManager : MonoBehaviour
         if (resetUI != null)
             resetAnimator = resetUI.GetComponent<Animator>();
             resetUI.SetActive(false); // Ensure it's disabled initially
+
+
+        // Find and cache the victoryUI at the start, even if disabled
+        victoryUI = GameObject.FindWithTag("winUI");
+        if (victoryUI != null)
+            victoryAnimator = victoryUI.GetComponent<Animator>();
+            victoryUI.SetActive(false); // Ensure it's disabled initially
     }
     private void Start()
     {

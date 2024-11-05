@@ -25,10 +25,12 @@ public class Ball : MonoBehaviour
     public GameObject destroyParticles;
     public GameObject firedParticles;
 
+
     [Header("SFX")]
     public AudioClip shotSFX;
     public AudioClip[] hitSFX;
     public AudioClip[] shatterSFX;
+    public AudioClip victorySFX;
 
     // Volume & componets values
     Volume globalVol;
@@ -46,7 +48,7 @@ public class Ball : MonoBehaviour
     float shakeActiveValue = 1.2f;
 
     GameObject resetUI;
-    float resetVector = 0.025f;
+    float resetVector = 0.035f;
     float lowVelTimer = 0f; // Timer for low velocity
     float lowVelDuration = 1.95f;
 
@@ -54,6 +56,7 @@ public class Ball : MonoBehaviour
     public float chromaticValueOnHit = 0f;  // Intensity when dragging
     float chromaticValueDefault = 0f;   // Default intensity when not dragging
     ChromaticAberration chromaticAberration;
+    LensDistortion lensDistortion;
 
 
     void Start()
@@ -91,6 +94,9 @@ public class Ball : MonoBehaviour
         // Access the Chromatic Aberration component in the Volume
         if (globalVol.profile.TryGet(out chromaticAberration))
             chromaticAberration.intensity.Override(chromaticValueDefault);
+
+        if (globalVol.profile.TryGet(out lensDistortion))
+            lensDistortion.intensity.Override(chromaticValueDefault);
     }
     private void Update()
     {
@@ -168,7 +174,7 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Flag"))
         {
-            CompleteLevel();
+            CompleteLevel(collision.gameObject);
         }
 
     }
@@ -252,8 +258,69 @@ public class Ball : MonoBehaviour
         chromaticAberration?.intensity.Override(chromaticValueOnHit);
     }
 
-    void CompleteLevel()
+    void CompleteLevel(GameObject flag)
     {
+        //Add fired(for win) particles
+        StartCoroutine(WinParticles(flag));
         Debug.Log("Level Completed");
+        //SfxManager.Instance.PlaySfx(victorySFX);
+
+
+        // Display the victory UI
+        ResetManager.Instance.victoryUI.SetActive(true);
+        lensDistortion.intensity.Override(1f);
+        Time.timeScale = 0.5f;
+    }
+
+    IEnumerator WinParticles(GameObject flag)
+    {
+        // Array of particle prefabs
+        GameObject[] particlePrefabs = { firedParticles, hitParticles, destroyParticles };
+        float duration = 10f;        // Total duration for fireworks
+        float interval = 0.2f;       // Time between particle spawns
+
+        float elapsedTime = 0f;      // Track elapsed time
+        Vector3 particleScale = new Vector3(5, 5, 1);  // Desired scale for particles
+
+        // Access LensDistortion from global volume profile
+        if (lensDistortion != null)
+        {
+            StartCoroutine(LerpLensDistortion(-1f, duration)); // Start lerping to -1f
+        }
+
+        while (elapsedTime < duration)
+        {
+            // Loop through each particle prefab to create a sequence
+            foreach (var particle in particlePrefabs)
+            {
+                // Spawn each particle prefab at the flag's position
+                GameObject instantiatedParticle = Instantiate(particle, flag.transform.position, Quaternion.identity);
+                // Set the scale of the instantiated particle
+                instantiatedParticle.transform.localScale = particleScale;
+                // Wait before spawning 
+                yield return new WaitForSeconds(interval);
+            }
+
+            // Update elapsed time
+            elapsedTime += interval;
+        }
+    }
+
+    // Coroutine to lerp the LensDistortion intensity
+    IEnumerator LerpLensDistortion(float targetIntensity, float duration)
+    {
+        float startIntensity = lensDistortion.intensity.value;
+        float elapsed = 0f;
+        float interval = 0.25f;
+
+        while (elapsed < duration*2)
+        {
+            float lerpedIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / duration);
+            lensDistortion.intensity.Override(lerpedIntensity);
+            elapsed += 0.05f;
+            yield return new WaitForSeconds(interval);
+        }
+        if(lensDistortion.intensity != targetIntensity)
+            lensDistortion.intensity.Override(targetIntensity);
     }
 }
