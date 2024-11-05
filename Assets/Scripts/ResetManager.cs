@@ -14,6 +14,7 @@ public class ResetManager : MonoBehaviour
     Animator resetAnimator;
     Animator victoryAnimator;
     public static ResetManager Instance;
+    public bool isWinning;
 
     int sceneIndex = 1;
 

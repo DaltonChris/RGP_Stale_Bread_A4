@@ -274,6 +274,7 @@ public class Ball : MonoBehaviour
     void CompleteLevel(GameObject flag)
     {
         hasWon = true;
+        ResetManager.Instance.isWinning = true;
         DisabledInteractions();
         DepthOfField.focalLength.Override(dofDefValue);
         StartCoroutine(WinParticles(flag));

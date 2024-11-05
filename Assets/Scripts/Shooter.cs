@@ -23,7 +23,7 @@ public class Shooter : MonoBehaviour
         RotateToFaceMouse();  // Rotate player towards mouse with clamped angles
         
 
-        if (!ballActive && !ResetManager.Instance.victoryUI.activeInHierarchy)
+        if (!ballActive && !ResetManager.Instance.isWinning)
         {
             UpdateTrajectory();  // Show trajectory preview
 
@@ -33,6 +33,11 @@ public class Shooter : MonoBehaviour
                 { StartCoroutine(ResetManager.Instance.ResetFadeOut());
                 }else{ LaunchBall(); }// Launch the ball when the mouse is clicked
             }
+        }
+
+        if (ResetManager.Instance.isWinning)
+        {
+            lineRenderer.enabled = false;
         }
     }
 
