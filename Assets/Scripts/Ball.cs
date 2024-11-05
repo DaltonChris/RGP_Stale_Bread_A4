@@ -30,8 +30,6 @@ public class Ball : MonoBehaviour
     public AudioClip[] hitSFX;
     public AudioClip[] shatterSFX;
 
-    private int hitNumber = 10;
-
     // Volume & componets values
     Volume globalVol;
     SplitToning SplitToning;
@@ -158,11 +156,11 @@ public class Ball : MonoBehaviour
         else
         {
             Instantiate(hitParticles, transform.position, Quaternion.identity);
-            //int randSFX = UnityEngine.Random.Range(0, hitSFX.Length); //Get random hit sfx clip
-            float velocityVolume = rb.velocity.magnitude/15.0f; //Map the velocity to a value roughly between 0 - 1 to get the volume
-            velocityVolume = Mathf.Clamp01(velocityVolume);
-            int sfxNumber = Mathf.FloorToInt(velocityVolume*10);
-            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume);
+            //int randSFX = UnityEngine.Random.Range(0, hitSFX.Length);     // Get random hit sfx clip- disabled in favor of velocity based selection
+            float velocityVolume = rb.velocity.magnitude/15.0f;             // Map the velocity to a value roughly between 0 - 1 to get the volume
+            velocityVolume = Mathf.Clamp01(velocityVolume);                 // Prevent the volume from going over 1 and potentially clipping
+            int sfxNumber = Mathf.FloorToInt(velocityVolume*10);            // Select an SFX clip based on the velocity, because the clips are organised by pitch
+            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume); // Play the relevant clip
             
         }
     }
