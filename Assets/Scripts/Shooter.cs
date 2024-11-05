@@ -23,7 +23,7 @@ public class Shooter : MonoBehaviour
         RotateToFaceMouse();  // Rotate player towards mouse with clamped angles
         
 
-        if (!ballActive)
+        if (!ballActive && !ResetManager.Instance.victoryUI.activeInHierarchy)
         {
             UpdateTrajectory();  // Show trajectory preview
 

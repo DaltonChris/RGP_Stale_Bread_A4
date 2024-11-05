@@ -137,8 +137,11 @@ public class Ball : MonoBehaviour
         {
             Destroy(existingTrail);//If it is, destroy it
         }
-        shootTrail.gameObject.tag = "ShootTrail";//Add tag to new one so it can be found by the next ball
-        shootTrail.transform.parent = null;//Unparent so it doesn't get destroyed
+        if(shootTrail != null)
+        {
+            shootTrail.gameObject.tag = "ShootTrail";//Add tag to new one so it can be found by the next ball
+            shootTrail.transform.parent = null;//Unparent so it doesn't get destroyed
+        }
 
         // Notify the shooter to reset when the ball leaves the screen
         OnBallReset?.Invoke();
