@@ -51,13 +51,15 @@ public class Ball : MonoBehaviour
     float resetVector = 0.035f;
     float lowVelTimer = 0f; // Timer for low velocity
     float lowVelDuration = 1.95f;
+    bool hasWon;
 
     [Header("VFX")]
     public float chromaticValueOnHit = 0f;  // Intensity when dragging
     float chromaticValueDefault = 0f;   // Default intensity when not dragging
     ChromaticAberration chromaticAberration;
     LensDistortion lensDistortion;
-
+    // Coroutine to lerp the LensDistortion intensity
+    bool isLensDistortionLerping = false;
 
     void Start()
     {
@@ -185,9 +187,12 @@ public class Ball : MonoBehaviour
     public IEnumerator DestroyAfterLerp()
     {
         DisabledInteractions();
-        yield return StartCoroutine(BallDestoryedLerpDefault());
-        chromaticAberration?.intensity.Override(chromaticValueDefault);
-        Destroy(gameObject);
+        if (!hasWon)
+        {
+            yield return StartCoroutine(BallDestoryedLerpDefault());
+            chromaticAberration?.intensity.Override(chromaticValueDefault);
+            Destroy(gameObject);
+        }
     }
     /// <summary>
     /// Lerps between Def and Hit values for effect on Global VOl
@@ -260,56 +265,58 @@ public class Ball : MonoBehaviour
 
     void CompleteLevel(GameObject flag)
     {
-        //Add fired(for win) particles
+        hasWon = true;
+        DisabledInteractions();
+        DepthOfField.focalLength.Override(dofDefValue);
         StartCoroutine(WinParticles(flag));
         Debug.Log("Level Completed");
-        //SfxManager.Instance.PlaySfx(victorySFX);
-
-
-        // Display the victory UI
-        ResetManager.Instance.victoryUI.SetActive(true);
-        lensDistortion.intensity.Override(-1f);
-        lensDistortion.scale.Override(1.2f);
-        Time.timeScale = 0.5f;
+        // SfxManager.Instance.PlaySfx(victorySFX);
     }
 
     IEnumerator WinParticles(GameObject flag)
     {
         // Array of particle prefabs
         GameObject[] particlePrefabs = { firedParticles, hitParticles, destroyParticles };
-        float duration = 10f;        // Total duration for fireworks
+        float duration = 1.55f;        // Total duration for fireworks
         float interval = 0.2f;       // Time between particle spawns
+        float halfwayPoint = duration / 2f; // Halfway point for lens distortion
 
         float elapsedTime = 0f;      // Track elapsed time
         Vector3 particleScale = new Vector3(4, 4, 1);  // Desired scale for particles
 
-        // Access LensDistortion from global volume profile
-        if (lensDistortion != null)
-        {
-            StartCoroutine(LerpLensDistortion(-1f, duration)); // Start lerping to -1f
-        }
-
+        // Start particle fireworks
         while (elapsedTime < duration)
         {
-            // Loop through each particle prefab to create a sequence
             foreach (var particle in particlePrefabs)
             {
-                // Spawn each particle prefab at the flag's position
                 GameObject instantiatedParticle = Instantiate(particle, flag.transform.position, Quaternion.identity);
-                // Set the scale of the instantiated particle
                 instantiatedParticle.transform.localScale = particleScale;
-                // Wait before spawning 
                 yield return new WaitForSeconds(interval);
             }
 
-            // Update elapsed time
             elapsedTime += interval;
+
+            // When halfway point is reached, start the lens distortion lerp
+            if (elapsedTime >= halfwayPoint && lensDistortion != null && !isLensDistortionLerping)
+            {
+                StartCoroutine(LerpLensDistortion(-1f, duration - halfwayPoint));
+                // After particles are done, activate victory UI
+                ResetManager.Instance.victoryUI.SetActive(true);
+            }
         }
+
+
+
+        // Wait for victory UI animation to finish (assuming it takes 1 second)
+        //yield return new WaitForSeconds(0.75f);
+
+        // Set the timescale to 0.5 after the animation
+        Time.timeScale = 0.75f;
     }
 
-    // Coroutine to lerp the LensDistortion intensity
     IEnumerator LerpLensDistortion(float targetIntensity, float duration)
     {
+        isLensDistortionLerping = true; // Flag to prevent multiple lerps
         float startIntensity = lensDistortion.intensity.value;
         float elapsed = 0f;
 
@@ -317,9 +324,12 @@ public class Ball : MonoBehaviour
         {
             float lerpedIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / duration);
             lensDistortion.intensity.Override(lerpedIntensity);
-            elapsed += Time.deltaTime * 8; // Update elapsed time each frame
-            yield return null; // Wait for the next frame
+            elapsed += Time.deltaTime;
+            yield return null;
         }
+
         lensDistortion.intensity.Override(targetIntensity);
+        isLensDistortionLerping = false;
     }
+
 }
