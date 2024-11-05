@@ -61,6 +61,11 @@ public class Ball : MonoBehaviour
     // Coroutine to lerp the LensDistortion intensity
     bool isLensDistortionLerping = false;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -277,9 +282,10 @@ public class Ball : MonoBehaviour
     {
         // Array of particle prefabs
         GameObject[] particlePrefabs = { firedParticles, hitParticles, destroyParticles };
-        float duration = 1.55f;        // Total duration for fireworks
-        float interval = 0.2f;       // Time between particle spawns
+        float duration = 1.25f;        // Total duration for fireworks
+        float interval = 0.05f;       // Time between particle spawns
         float halfwayPoint = duration / 2f; // Halfway point for lens distortion
+        
 
         float elapsedTime = 0f;      // Track elapsed time
         Vector3 particleScale = new Vector3(4, 4, 1);  // Desired scale for particles
@@ -299,19 +305,12 @@ public class Ball : MonoBehaviour
             // When halfway point is reached, start the lens distortion lerp
             if (elapsedTime >= halfwayPoint && lensDistortion != null && !isLensDistortionLerping)
             {
-                StartCoroutine(LerpLensDistortion(-1f, duration - halfwayPoint));
+                StartCoroutine(LerpLensDistortion(-1f, duration));
                 // After particles are done, activate victory UI
                 ResetManager.Instance.victoryUI.SetActive(true);
             }
         }
-
-
-
-        // Wait for victory UI animation to finish (assuming it takes 1 second)
-        //yield return new WaitForSeconds(0.75f);
-
-        // Set the timescale to 0.5 after the animation
-        Time.timeScale = 0.75f;
+        Time.timeScale = 0.5f;
     }
 
     IEnumerator LerpLensDistortion(float targetIntensity, float duration)
@@ -319,16 +318,21 @@ public class Ball : MonoBehaviour
         isLensDistortionLerping = true; // Flag to prevent multiple lerps
         float startIntensity = lensDistortion.intensity.value;
         float elapsed = 0f;
+        float startScale = lensDistortion.scale.value;
+        float targetScale = 1.5f;
 
         while (elapsed < duration)
         {
             float lerpedIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / duration);
+            float lerpedScale = Mathf.Lerp(startScale, targetScale, elapsed / duration);
             lensDistortion.intensity.Override(lerpedIntensity);
+            lensDistortion.scale.Override(lerpedScale);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
         lensDistortion.intensity.Override(targetIntensity);
+        lensDistortion.scale.Override(targetScale);
         isLensDistortionLerping = false;
     }
 

@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8349480048913528289}
-  m_Layer: 0
+  - component: {fileID: 988740475130848684}
+  m_Layer: 7
   m_Name: SpawnSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,9 +33,54 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.5, y: 0}
+  m_AnchoredPosition: {x: 8.15, y: 0}
   m_SizeDelta: {x: 1, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &988740475130848684
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920619998922182769}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 767
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 9.5}
+  m_EdgeRadius: 0
 --- !u!1 &3520138652361059983
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,8 +128,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shapePrefabs:
   - {fileID: 246516581824140368, guid: 629bb14caa79b5c478a0c88a97d6e826, type: 3}
+  - {fileID: 246516581824140368, guid: 629bb14caa79b5c478a0c88a97d6e826, type: 3}
   - {fileID: 2303555822017041318, guid: 5be81c0ea5b9c644c85d53a4e288e9e6, type: 3}
-  shapeCount: 5
-  spawnPadding: 1.25
-  spawnSpace: {fileID: 0}
-  spawnArea: {x: 0.35, y: 8}
+  - {fileID: 2303555822017041318, guid: 5be81c0ea5b9c644c85d53a4e288e9e6, type: 3}
+  - {fileID: 246516581824140368, guid: 45e55419f97a688439d0430e74a78547, type: 3}
+  - {fileID: 246516581824140368, guid: 45e55419f97a688439d0430e74a78547, type: 3}
+  - {fileID: 2783323162225694009, guid: 21d31af8ddba78d4da3372c434a39978, type: 3}
+  shapeCount: 7
+  spawnPadding: 1.05
+  spawnSpace: {fileID: 8349480048913528289}
+  spawnArea: {x: 0.25, y: 9}
