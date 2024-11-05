@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6289919162498173230}
   - component: {fileID: 3092911991356341288}
   - component: {fileID: 5501507016934466153}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flag Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5160132958510127474}
   - component: {fileID: 5148507294013242352}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot_Light_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 5710192394170453061}
   - component: {fileID: 1575710366262448211}
   - component: {fileID: 5742566339242677372}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6372314305623671616}
   - component: {fileID: 3349522494053814319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1387301621365683842}
   - component: {fileID: 9142364112959381031}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpotLight_holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 9130844838025774595}
   - component: {fileID: 5597074370209287080}
   - component: {fileID: 8471066216685668667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flag
   m_TagString: Flag
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6103093614689112957}
   - component: {fileID: 682169410174157437}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2460190127862875453}
   - component: {fileID: 3548701439962680680}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Back_outliner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
