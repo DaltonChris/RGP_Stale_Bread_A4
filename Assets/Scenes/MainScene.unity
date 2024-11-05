@@ -1051,6 +1051,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetUI: {fileID: 735150014}
   victoryUI: {fileID: 0}
+  isWinning: 0
 --- !u!4 &1213938872
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,6 +2079,14 @@ PrefabInstance:
     - target: {fileID: 873996233196518970, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345602705514861405, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 3357540541
+      objectReference: {fileID: 0}
+    - target: {fileID: 3301591466363501803, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 5444951589133095006, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_Name
