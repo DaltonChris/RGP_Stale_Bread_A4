@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.2920375, a: 1}
+  m_Color: {r: 0.36199737, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -178,7 +178,6 @@ MonoBehaviour:
   skinWidth: 0.1
   collisionBuffer: 0.001
   chromaticValueOnDrag: 0.25
-  chromaticValueDefault: 0
   HoverSprite: {fileID: 298913971759797012}
   HoverColour: {r: 1, g: 1, b: 1, a: 1}
   HoverMultiply: 1.2

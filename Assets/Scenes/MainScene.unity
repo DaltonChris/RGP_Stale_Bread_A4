@@ -2555,18 +2555,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Weak BoostMoveable '
       objectReference: {fileID: 0}
-    - target: {fileID: 6575072405880541302, guid: e334817917e873440b97f24cde45c638, type: 3}
-      propertyPath: DragColour.a
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575072405880541302, guid: e334817917e873440b97f24cde45c638, type: 3}
-      propertyPath: HoverColour.a
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 7625688911911415313, guid: e334817917e873440b97f24cde45c638, type: 3}
-      propertyPath: pushForce
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9083145145414298320, guid: e334817917e873440b97f24cde45c638, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6
@@ -4615,6 +4603,14 @@ PrefabInstance:
     - target: {fileID: 3299542200933070327, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
       propertyPath: m_Name
       value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: m_Pitch
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
