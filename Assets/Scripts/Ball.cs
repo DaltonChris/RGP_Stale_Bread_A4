@@ -268,7 +268,8 @@ public class Ball : MonoBehaviour
 
         // Display the victory UI
         ResetManager.Instance.victoryUI.SetActive(true);
-        lensDistortion.intensity.Override(1f);
+        lensDistortion.intensity.Override(-1f);
+        lensDistortion.scale.Override(1.2f);
         Time.timeScale = 0.5f;
     }
 
@@ -280,7 +281,7 @@ public class Ball : MonoBehaviour
         float interval = 0.2f;       // Time between particle spawns
 
         float elapsedTime = 0f;      // Track elapsed time
-        Vector3 particleScale = new Vector3(5, 5, 1);  // Desired scale for particles
+        Vector3 particleScale = new Vector3(4, 4, 1);  // Desired scale for particles
 
         // Access LensDistortion from global volume profile
         if (lensDistortion != null)
@@ -311,16 +312,14 @@ public class Ball : MonoBehaviour
     {
         float startIntensity = lensDistortion.intensity.value;
         float elapsed = 0f;
-        float interval = 0.25f;
 
-        while (elapsed < duration*2)
+        while (elapsed < duration)
         {
             float lerpedIntensity = Mathf.Lerp(startIntensity, targetIntensity, elapsed / duration);
             lensDistortion.intensity.Override(lerpedIntensity);
-            elapsed += 0.05f;
-            yield return new WaitForSeconds(interval);
+            elapsed += Time.deltaTime * 8; // Update elapsed time each frame
+            yield return null; // Wait for the next frame
         }
-        if(lensDistortion.intensity != targetIntensity)
-            lensDistortion.intensity.Override(targetIntensity);
+        lensDistortion.intensity.Override(targetIntensity);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ResetManager : MonoBehaviour
 {
@@ -71,6 +72,10 @@ public class ResetManager : MonoBehaviour
                 ResetBall();  // Tap R to reset the ball
             }
             holdTimer = 0f;  // Reset the timer if R is released early
+        }
+        if(victoryUI.activeInHierarchy && Input.GetKey(KeyCode.Space)) // change scene
+        {
+            SceneManager.LoadScene(1); // reload
         }
     }
 
