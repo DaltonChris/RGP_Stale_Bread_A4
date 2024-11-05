@@ -15,6 +15,7 @@ public class ResetManager : MonoBehaviour
     Animator victoryAnimator;
     public static ResetManager Instance;
 
+    int sceneIndex = 1;
 
     private void Awake()
     {
@@ -75,7 +76,9 @@ public class ResetManager : MonoBehaviour
         }
         if(victoryUI.activeInHierarchy && Input.GetKey(KeyCode.Space)) // change scene
         {
-            SceneManager.LoadScene(1); // reload
+            //SceneManager.LoadScene(1); // reload
+            sceneIndex++;
+            SceneManager.LoadScene(sceneIndex); // next scene
         }
     }
 

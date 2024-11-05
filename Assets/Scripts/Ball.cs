@@ -292,6 +292,8 @@ public class Ball : MonoBehaviour
 
         float elapsedTime = 0f;      // Track elapsed time
         Vector3 particleScale = new Vector3(4, 4, 1);  // Desired scale for particles
+        
+        Time.timeScale = 0.85f;
 
         // Start particle fireworks
         while (elapsedTime < duration)
@@ -303,7 +305,7 @@ public class Ball : MonoBehaviour
                 yield return new WaitForSeconds(interval);
             }
 
-            elapsedTime += interval;
+            elapsedTime += interval * 2;
 
             // When halfway point is reached, start the lens distortion lerp
             if (elapsedTime >= halfwayPoint && lensDistortion != null && !isLensDistortionLerping)
