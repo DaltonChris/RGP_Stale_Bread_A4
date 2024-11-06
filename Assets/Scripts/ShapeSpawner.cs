@@ -17,7 +17,7 @@ public class ShapeSpawner : MonoBehaviour
     {
         spawnAreaCollider = spawnSpace.GetComponent<BoxCollider2D>();
 
-        SpawnShapes();
+        
     }
 
     private void Update()
