@@ -77,9 +77,20 @@ public class ResetManager : MonoBehaviour
         }
         if(victoryUI.activeInHierarchy && Input.GetKey(KeyCode.Space)) // change scene
         {
-            //SceneManager.LoadScene(1); // reload
-            sceneIndex++;
-            SceneManager.LoadScene(sceneIndex); // next scene
+            LoadNextScene();
+        }
+    }
+
+    public void LoadNextScene()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex); // Load the next scene
+        }
+        else
+        {
+            SceneManager.LoadScene(0); // Optionally loop back to the first scene
         }
     }
 
