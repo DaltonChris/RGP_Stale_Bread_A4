@@ -20,7 +20,7 @@ public class ShapeSpawner : MonoBehaviour
         
     }
 
-    private void Update()
+   /* private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -34,7 +34,7 @@ public class ShapeSpawner : MonoBehaviour
                 Debug.Log("Spawn area is not empty.");
             }
         }
-    }
+    }*/
 
     // Spawn shapes in random positions without overlap
     private void SpawnShapes()
