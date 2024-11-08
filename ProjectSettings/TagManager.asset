@@ -15,6 +15,7 @@ TagManager:
   - ResetUI
   - Flag
   - winUI
+  - LevelText
   layers:
   - Default
   - TransparentFX

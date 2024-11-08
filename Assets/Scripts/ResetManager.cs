@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using TMPro;
 
 public class ResetManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class ResetManager : MonoBehaviour
     Animator victoryAnimator;
     public static ResetManager Instance;
     public bool isWinning;
+    public GameObject levelTextObj;
+    TextMeshProUGUI levelText;
+
 
     int sceneIndex = 1;
 
@@ -45,9 +49,27 @@ public class ResetManager : MonoBehaviour
         if (victoryUI != null)
             victoryAnimator = victoryUI.GetComponent<Animator>();
             victoryUI.SetActive(false); // Ensure it's disabled initially
+
+        levelTextObj = GameObject.FindWithTag("LevelText");
+        if (levelTextObj != null)
+            levelText = levelTextObj.GetComponent<TextMeshProUGUI>();
+
+
     }
+
     private void Start()
     {
+        if (levelText != null)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                levelText.text = "Start Menu";
+            }
+            else
+            {
+                levelText.text = $"Level: {SceneManager.GetActiveScene().buildIndex}";
+            }
+        }
         // Store the original positions of all draggable objects
         foreach (var obj in FindObjectsOfType<Draggable>())
         {
