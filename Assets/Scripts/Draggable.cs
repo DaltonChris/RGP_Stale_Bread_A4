@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Cinemachine;
 
 public class Draggable : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class Draggable : MonoBehaviour
 
     Volume globalVol;
     ChromaticAberration chromaticAberration;
+    CinemachineVirtualCamera virtualCam;
+
 
     public GameObject HoverSprite;  // Child object with hover effect sprite
     public Color HoverColour = Color.white; // Colour to tint the hoversprite
@@ -48,6 +51,7 @@ public class Draggable : MonoBehaviour
 
         HoverSprite.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
         HoverSprite.GetComponent<SpriteRenderer>().color = HoverColour;
+        virtualCam = GameObject.FindWithTag("CineCam").GetComponent<CinemachineVirtualCamera>();
 
         // Access the Chromatic Aberration component in the Volume
         if (globalVol.profile.TryGet(out chromaticAberration))
@@ -122,9 +126,18 @@ public class Draggable : MonoBehaviour
 
     private void MoveTowardsTarget(Vector3 targetPosition)
     {
-        // Limit the shape obj position within the bounds
-        targetPosition.x = Mathf.Clamp(targetPosition.x, -9f, 9f);
-        targetPosition.y = Mathf.Clamp(targetPosition.y, -5f, 5f);
+        if (IsLargeLevel())
+        {
+            // Limit the shape obj position within the bounds
+            targetPosition.x = Mathf.Clamp(targetPosition.x, -13f, 13f);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, -7.5f, 7.5f);
+        }
+        else
+        {
+            // Limit the shape obj position within the bounds
+            targetPosition.x = Mathf.Clamp(targetPosition.x, -9f, 9f);
+            targetPosition.y = Mathf.Clamp(targetPosition.y, -5f, 5f);
+        }
 
         Vector2 movementDirection = (targetPosition - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, targetPosition);
@@ -208,5 +221,18 @@ public class Draggable : MonoBehaviour
             return;
         }
         HoverSprite.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+    }
+
+    bool IsLargeLevel()
+    {
+        // Check OrthographicSize 
+        if (virtualCam.m_Lens.OrthographicSize >= 6)
+        {
+            return true;
+        }
+        else
+        {
+           return false;
+        }
     }
 }
