@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8499488335911182203}
   - component: {fileID: 49835453989614763}
   - component: {fileID: 9119656185289316551}
+  - component: {fileID: 990553011794128908}
   m_Layer: 8
   m_Name: BoostMoveable
   m_TagString: Shape
@@ -167,7 +168,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2783323162225694009}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -272,6 +273,51 @@ MonoBehaviour:
   - {x: -0.6647362, y: 0.30076954, z: 0}
   - {x: -0.33489046, y: -0.00044988724, z: 0}
   - {x: -0.6433386, y: -0.25368837, z: 0}
+--- !u!61 &990553011794128908
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783323162225694009}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.015710324, y: 0.006284058}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.86, y: 0.72}
+    newSize: {x: 1.86, y: 0.72}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7133698, y: 0.638306}
+  m_EdgeRadius: 0
 --- !u!1001 &8447438954943970484
 PrefabInstance:
   m_ObjectHideFlags: 0
