@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 7850038237659269689}
   - component: {fileID: 7340865736180477038}
   - component: {fileID: 4595183804816695633}
+  - component: {fileID: 7839415643977116433}
   m_Layer: 5
   m_Name: LogoImage
   m_TagString: Untagged
@@ -917,6 +918,27 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &7839415643977116433
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5356858553263677268}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b62c18934b98934a84170bcdfe46fb5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5444951589133095006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1798,7 +1820,7 @@ GameObject:
   - component: {fileID: 5296045335249936993}
   - component: {fileID: 3774303876878671769}
   m_Layer: 5
-  m_Name: Text (TMP)_1
+  m_Name: Reset Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
