@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ResetManager : MonoBehaviour
 {
@@ -126,5 +127,10 @@ public class ResetManager : MonoBehaviour
         resetAnimator.SetTrigger("Fade");
         yield return new WaitForSeconds(1f);
         resetUI.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
