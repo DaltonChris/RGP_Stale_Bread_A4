@@ -122,9 +122,14 @@ public class Draggable : MonoBehaviour
 
     private void MoveTowardsTarget(Vector3 targetPosition)
     {
+        // Limit the shape obj position within the bounds
+        targetPosition.x = Mathf.Clamp(targetPosition.x, -9f, 9f);
+        targetPosition.y = Mathf.Clamp(targetPosition.y, -5f, 5f);
+
         Vector2 movementDirection = (targetPosition - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, targetPosition);
 
+        // Interpolated position within bounds
         Vector3 interpolatedPosition = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * dragSpeed);
 
         if (!CheckForCollisionsAndSlide(movementDirection, interpolatedPosition))
@@ -132,6 +137,7 @@ public class Draggable : MonoBehaviour
             transform.position = interpolatedPosition;
         }
     }
+
 
     private bool CheckForCollisionsAndSlide(Vector2 direction, Vector3 targetPosition)
     {
