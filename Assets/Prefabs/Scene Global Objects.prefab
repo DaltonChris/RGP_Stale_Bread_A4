@@ -273,6 +273,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: m_Pitch
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: DopplerLevel
+      value: 2.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298041351367052665, guid: 13355174673f6c045b53541e9cf29ec4, type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.29444444
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

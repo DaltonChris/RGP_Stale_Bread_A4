@@ -602,7 +602,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 286, y: -20}
+  m_AnchoredPosition: {x: 262.8, y: -20}
   m_SizeDelta: {x: 250, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &781047988
@@ -634,8 +634,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2288000495
-  m_fontColor: {r: 0.93542105, g: 0.11399367, b: 0.3766751, a: 0.53333336}
+    rgba: 2285309695
+  m_fontColor: {r: 1, g: 0.05490196, b: 0.21568628, a: 0.53333336}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -8.84
-  m_wordSpacing: -53.52
+  m_wordSpacing: -68.6
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -925,10 +925,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2681749511454269045, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2754091840435874191, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3654120996470761008, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3654120996470761008, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_LocalScale.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5340780472748821709, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
@@ -938,6 +946,14 @@ PrefabInstance:
     - target: {fileID: 5444951589133095006, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_Name
       value: UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605557144686236551, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5605557144686236551, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
