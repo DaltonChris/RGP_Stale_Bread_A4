@@ -1102,6 +1102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetUI: {fileID: 735150014}
   victoryUI: {fileID: 0}
+  resetSFX: {fileID: 8300000, guid: 41340f70065868b4ba762d1f84258275, type: 3}
+  longResetPlayer: {fileID: 0}
+  resetIndicator: {fileID: 0}
   isWinning: 0
 --- !u!4 &1213938872
 Transform:

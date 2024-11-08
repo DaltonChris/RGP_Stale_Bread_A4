@@ -12,6 +12,10 @@ public class ResetManager : MonoBehaviour
     private float holdTimer = 0f;
     public GameObject resetUI;
     public GameObject victoryUI;
+    public AudioClip resetSFX;
+    public AudioSource longResetPlayer;
+    private bool justReset;
+    public Slider resetIndicator;
     Animator resetAnimator;
     Animator victoryAnimator;
     public static ResetManager Instance;
@@ -45,6 +49,8 @@ public class ResetManager : MonoBehaviour
         if (victoryUI != null)
             victoryAnimator = victoryUI.GetComponent<Animator>();
             victoryUI.SetActive(false); // Ensure it's disabled initially
+        
+        longResetPlayer = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -60,12 +66,20 @@ public class ResetManager : MonoBehaviour
         // Handle both tapping and holding R
         if (Input.GetKey(KeyCode.R))
         {
-            holdTimer += Time.deltaTime;
+            if (justReset == false)
+            {
+                if (holdTimer == 0)
+                {
+                    if (longResetPlayer != null){longResetPlayer.Play();}
+                }
+                holdTimer += Time.deltaTime;
+            }
 
             if (holdTimer >= holdTime)
             {
                 ResetScene();  // Reset scene if R is held long enough
                 holdTimer = 0f;  // Reset the timer
+                justReset = true;
             }
         }
         else if (Input.GetKeyUp(KeyCode.R))
@@ -75,7 +89,12 @@ public class ResetManager : MonoBehaviour
                 ResetBall();  // Tap R to reset the ball
             }
             holdTimer = 0f;  // Reset the timer if R is released early
+            if (longResetPlayer != null){longResetPlayer.Stop();}
+            justReset = false;
         }
+
+        if (resetIndicator != null){resetIndicator.value = holdTimer;}
+
         if(victoryUI.activeInHierarchy && Input.GetKey(KeyCode.Space)) // change scene
         {
             LoadNextScene();
@@ -93,6 +112,7 @@ public class ResetManager : MonoBehaviour
         {
             SceneManager.LoadScene(0); // Optionally loop back to the first scene
         }
+        Time.timeScale = 1.0f; //Set the time scale back to normal
     }
 
     void ResetBall()
@@ -111,6 +131,7 @@ public class ResetManager : MonoBehaviour
 
     private void ResetScene()
     {
+        
         if (resetUI != null)
             if (resetUI.activeInHierarchy) resetUI.SetActive(false);
         // Reset all draggable objects to their original positions
@@ -118,7 +139,6 @@ public class ResetManager : MonoBehaviour
         {
             entry.Key.position = entry.Value;
         }
-
         ResetBall();  // Also reset the ball during scene reset
     }
 

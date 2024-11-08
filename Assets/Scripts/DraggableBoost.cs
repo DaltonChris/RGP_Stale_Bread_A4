@@ -7,6 +7,10 @@ public class DraggableBoost : MonoBehaviour
     public float pushForce = 10f;  // strength of the push
     public bool isWeakBooster = false;
 
+    [Header("SFX")]
+    public AudioClip weakBoostSFX;
+    public AudioClip strongBoostSFX;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -25,6 +29,7 @@ public class DraggableBoost : MonoBehaviour
                     ballRigidbody.velocity = new Vector2(0, 0);
                     // Apply force 
                     ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
+                    SfxManager.Instance.PlaySfx(strongBoostSFX);
                 }
                 else
                 {
@@ -33,6 +38,7 @@ public class DraggableBoost : MonoBehaviour
 
                     // Apply force 
                     ballRigidbody.AddForce(forceDirection, ForceMode2D.Impulse);
+                    SfxManager.Instance.PlaySfx(weakBoostSFX);
                 }
             }
         }

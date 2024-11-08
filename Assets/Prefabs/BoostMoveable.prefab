@@ -157,6 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushForce: 20
+  isWeakBooster: 0
+  weakBoostSFX: {fileID: 8300000, guid: d8258709da6ff26458285fbbd6282b89, type: 3}
+  strongBoostSFX: {fileID: 8300000, guid: 21c5bc28801506947ac0179044c704f4, type: 3}
 --- !u!70 &8499488335911182203
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
