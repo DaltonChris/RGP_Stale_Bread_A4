@@ -277,6 +277,7 @@ public class Ball : MonoBehaviour
         ResetManager.Instance.isWinning = true;
         DisabledInteractions();
         DepthOfField.focalLength.Override(dofDefValue);
+        SfxManager.Instance.PlaySfx(victorySFX);
         StartCoroutine(WinParticles(flag));
         Debug.Log("Level Completed");
         // SfxManager.Instance.PlaySfx(victorySFX);
