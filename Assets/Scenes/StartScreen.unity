@@ -150,7 +150,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7a42bfffdeff4a4faab1f90e46987ea, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a60e104ce924c464dbc1575317f6f742, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.6
   m_Pitch: 1
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Flag_Ball
+  m_text: Flagged for Victory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a398c0b5733755c4fbabfce212953126, type: 2}
   m_sharedMaterial: {fileID: -6881947078098782946, guid: a398c0b5733755c4fbabfce212953126, type: 2}
