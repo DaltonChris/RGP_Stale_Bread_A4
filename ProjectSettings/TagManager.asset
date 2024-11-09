@@ -16,6 +16,7 @@ TagManager:
   - Flag
   - winUI
   - LevelText
+  - GameMusic
   layers:
   - Default
   - TransparentFX
