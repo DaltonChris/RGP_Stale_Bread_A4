@@ -1084,6 +1084,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3775448873943955869, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5108527348703316789, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5340780472748821709, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1109,10 +1117,12 @@ PrefabInstance:
       value: -25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 468973009332803117, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+    - {fileID: 5340780472748821709, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 873996233196518970, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      insertIndex: 1
+      insertIndex: 0
       addedObject: {fileID: 2080770886}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
@@ -2839,7 +2849,7 @@ GameObject:
   - component: {fileID: 2080770887}
   m_Layer: 5
   m_Name: Start Menu
-  m_TagString: winUI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2886,7 +2896,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: cb8ac46278b22d140856ea11923279a8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
