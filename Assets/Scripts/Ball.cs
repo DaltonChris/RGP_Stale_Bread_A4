@@ -48,7 +48,7 @@ public class Ball : MonoBehaviour
     float shakeActiveValue = 1.2f;
 
     GameObject resetUI;
-    float resetVector = 0.045f;
+    float resetVector = 0.065f;
     float lowVelTimer = 0f; // Timer for low velocity
     float lowVelDuration = 1.95f;
     bool hasWon;
