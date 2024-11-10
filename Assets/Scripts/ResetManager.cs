@@ -119,6 +119,12 @@ public class ResetManager : MonoBehaviour
         {
             LoadNextScene();
         }
+
+        
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     public void LoadNextScene()
