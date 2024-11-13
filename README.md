@@ -1,28 +1,31 @@
-
 # RGP - StaleBread A3 - |11 / 2024|
 
 ### RGP204: Rapid Game Prototype - |Assessment 3|
- Repo for group [Stale Bread] to collaborate on Assignment 3
 
-Game Title: 
- - Flagged For Victory
+Repo for group [Stale Bread] to collaborate on Assignment 3
 
-Game Description: 
+Game Title:
 
- - Aim and shoot a ball into a level with the goal to avoid obstacles and reach the goal and arrange objects to create a path to the end.
+- Flagged For Victory
 
+Game Description:
+
+- Aim and shoot a ball into a level with the goal to avoid obstacles and reach the goal and arrange objects to create a path to the end.
 
 ### Project Images:
-![menu](https://github.com/user-attachments/assets/fda6dd90-bcb0-445c-80c7-968cf8b9b6e0)
-![a](https://github.com/user-attachments/assets/9faac42d-d09e-4d6f-b9d1-77038be6a8da)
-![c](https://github.com/user-attachments/assets/084e9014-24cc-4d7f-bfd7-fa84a3211829)
-![b](https://github.com/user-attachments/assets/0f62a2a6-6227-4e24-baf3-dbcc59c0e11b)
 
+![Menu Image](https://media.githubusercontent.com/media/DaltonChris/RGP_Stale_Bread_A3/main/Assets/ScreenCaps/menu.png?token=BB6XGGEF2MLW53LZSVWLPMDHGBWLQ)
+![enter image description here](https://media.githubusercontent.com/media/DaltonChris/RGP_Stale_Bread_A3/main/Assets/ScreenCaps/b.png?token=BB6XGGGWF6BFNFBVTKE3BGTHGBWK2)
+![enter image description here](https://media.githubusercontent.com/media/DaltonChris/RGP_Stale_Bread_A3/main/Assets/ScreenCaps/c.png?token=BB6XGGFESTJJ6VPFH74RFP3HGBWLW)
+![enter image description here](https://media.githubusercontent.com/media/DaltonChris/RGP_Stale_Bread_A3/main/Assets/ScreenCaps/b.png?token=BB6XGGGWF6BFNFBVTKE3BGTHGBWK2)
 
 ### Group Members:
 
--   Dalton Christopher
--   Dylan Coon
--   Deepraj Bhullar
--   Mikhael O'brien
-  
+- Dalton Christopher
+- Dylan Coon
+- Deepraj Bhullar
+- Mikhael O'brien
+
+### A4 REPO:
+
+- Starting Commit Before A4 work SHA - 6edfd15f7d2893c18cfc275bfe720f0639e46dda
