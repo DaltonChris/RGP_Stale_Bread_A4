@@ -6,10 +6,12 @@ public class DraggableBoost : MonoBehaviour
 {
     public float pushForce = 10f;  // strength of the push
     public bool isWeakBooster = false;
+    public bool isGravityFlipper = false;
 
     [Header("SFX")]
     public AudioClip weakBoostSFX;
     public AudioClip strongBoostSFX;
+    public AudioClip gravityFlipSFX;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,7 +22,18 @@ public class DraggableBoost : MonoBehaviour
 
             if (ballRigidbody != null)
             {
-                if (!isWeakBooster)
+                if (isGravityFlipper)
+                {
+                    // Flip the gravity on the ball
+                    ballRigidbody.gravityScale *= -1;
+
+                    // Play gravity flip SFX if available
+                    if (gravityFlipSFX != null)
+                    {
+                        SfxManager.Instance.PlaySfx(gravityFlipSFX);
+                    }
+                }
+                else if (!isWeakBooster)
                 {
                     // Calculate the force direction 
                     Vector2 forceDirection = -transform.right * pushForce;
