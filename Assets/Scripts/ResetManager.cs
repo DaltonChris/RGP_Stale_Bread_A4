@@ -83,6 +83,8 @@ public class ResetManager : MonoBehaviour
 
     private void Update()
     {
+        if (PauseMenu.IsPaused) return;
+
         // Handle both tapping and holding R
         if (Input.GetKey(KeyCode.R))
         {
