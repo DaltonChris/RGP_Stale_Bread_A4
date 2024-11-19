@@ -20,8 +20,9 @@ public class Shooter : MonoBehaviour
 
     void Update()
     {
-        RotateToFaceMouse();  // Rotate player towards mouse with clamped angles
-        
+         if (PauseMenu.IsPaused) return;
+
+        RotateToFaceMouse();  // Rotate the cannon based on mouse position
 
         if (!ballActive && !ResetManager.Instance.isWinning)
         {
@@ -30,8 +31,13 @@ public class Shooter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (ResetManager.Instance.resetUI.activeInHierarchy)
-                { StartCoroutine(ResetManager.Instance.ResetFadeOut());
-                }else{ LaunchBall(); }// Launch the ball when the mouse is clicked
+                {
+                    StartCoroutine(ResetManager.Instance.ResetFadeOut());
+                }
+                else
+                {
+                    LaunchBall();  // Launch the ball when the Space key is pressed
+                }
             }
         }
 
