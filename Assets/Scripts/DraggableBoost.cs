@@ -13,6 +13,21 @@ public class DraggableBoost : MonoBehaviour
     public AudioClip strongBoostSFX;
     public AudioClip gravityFlipSFX;
 
+    [Header("VFX")]
+    public Vector2 scrollDirection;
+    public float scrollValue = 1.0f;
+
+    private Vector2 scrollVector;
+
+    private void Start()
+    {
+        if (isGravityFlipper)
+        {
+            scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue);
+            GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         
@@ -26,6 +41,9 @@ public class DraggableBoost : MonoBehaviour
                 {
                     // Flip the gravity on the ball
                     ballRigidbody.gravityScale *= -1;
+
+                    scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue * ballRigidbody.gravityScale);
+                    GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
 
                     // Play gravity flip SFX if available
                     if (gravityFlipSFX != null)
