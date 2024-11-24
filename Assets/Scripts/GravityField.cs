@@ -6,6 +6,8 @@ public class GravityField : MonoBehaviour
 {
     public float gravityStrength = 5f;  // Strength of the gravitational pull
     public float pullRadius = 3f;       // Radius where the gravity starts affecting the ball
+    public ParticleSystem orbitingParticles; 
+    public float orbitSpeed = 50f;      // speed of orbiting of particles go make it look like there is a orbit
 
     private void FixedUpdate()
     {
@@ -30,9 +32,13 @@ public class GravityField : MonoBehaviour
                 }
             }
         }
-    }
 
-    
+        // Rotate the particle system around the object
+        if (orbitingParticles != null)
+        {
+            orbitingParticles.transform.RotateAround(transform.position, Vector3.forward, orbitSpeed * Time.deltaTime);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
