@@ -122,32 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &100097592 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5356858553263677268, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-  m_PrefabInstance: {fileID: 834799139679191024}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &100097596
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100097592}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4b62c18934b98934a84170bcdfe46fb5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &103559270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1336,6 +1310,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1191627967859183349, guid: 316fe1085c5390244a40956a1d56b499, type: 3}
   m_PrefabInstance: {fileID: 1528409807}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1532604324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+  m_PrefabInstance: {fileID: 5311081554828006118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f74ae7f53a2e6489e40a1b086152e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1535394408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6902,30 +6887,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2345602705514861405, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 3357540541
-      objectReference: {fileID: 0}
-    - target: {fileID: 3301591466363501803, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
-      objectReference: {fileID: 0}
+    - target: {fileID: 3508184372867738503, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1532604324}
     - target: {fileID: 4197331483828115964, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3037266597680887297}
-    - target: {fileID: 4197331483828115964, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ResumeGame
-      objectReference: {fileID: 0}
     - target: {fileID: 4367577236879269087, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3037266597680887297}
-    - target: {fileID: 4367577236879269087, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadMainMenu
-      objectReference: {fileID: 0}
     - target: {fileID: 5444951589133095006, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -6933,10 +6906,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5356858553263677268, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 100097596}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
 --- !u!1 &834799139679191025 stripped
 GameObject:

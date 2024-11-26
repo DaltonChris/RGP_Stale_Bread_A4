@@ -170,6 +170,15 @@ public class ResetManager : MonoBehaviour
         ResetBall();  // Also reset the ball during scene reset
     }
 
+    public void ResetCurrentSceneButton()
+    {
+       // Reload the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+        // Optional: Ensure time scale is reset in case the game was paused
+        Time.timeScale = 1f;
+    }
+
     public IEnumerator ResetFadeOut()
     {
         resetAnimator.SetTrigger("Fade");
