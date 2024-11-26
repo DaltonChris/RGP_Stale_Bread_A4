@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Realm2/Level- 11.unity
     guid: cc282deaf4e53be479614fe040a19040
+  - enabled: 1
+    path: Assets/Scenes/Realm2/Level- 12.unity
+    guid: 41ddc2e89b8ba35409b203c9f67d167e
   m_configObjects: {}
