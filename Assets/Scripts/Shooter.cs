@@ -132,7 +132,7 @@ public class Shooter : MonoBehaviour
         trajectoryPoints.Add(currentPoint);  // Add the starting point
 
         // Loop through trajectory points until collision or max steps
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 20; i++)
         {
             Vector2 nextPoint = currentPoint + velocity * timeStep + 0.5f * Physics2D.gravity * (timeStep * timeStep);
 
