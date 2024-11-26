@@ -1313,6 +1313,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3508184372867738503, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1981602460}
+    - target: {fileID: 3508184372867738503, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetCurrentSceneButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4197331483828115964, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2023,6 +2031,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1981602460 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+  m_PrefabInstance: {fileID: 1981602458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f74ae7f53a2e6489e40a1b086152e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2058444148
