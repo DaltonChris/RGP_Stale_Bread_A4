@@ -10,7 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // Capture Escape key to pause or resume the game
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (IsPaused)
             {
@@ -25,15 +26,15 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        pauseMenuUI.SetActive(true);  // Show the pause menu
+        Time.timeScale = 0f;         // Pause the game
         IsPaused = true;
     }
 
     public void ResumeGame()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);  // Hide the pause menu
+        Time.timeScale = 1f;           // Resume the game
         IsPaused = false;
     }
 
