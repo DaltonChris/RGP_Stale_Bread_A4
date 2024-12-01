@@ -1365,7 +1365,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4563222562377626086, guid: 45e55419f97a688439d0430e74a78547, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1685,7 +1686,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4563222562377626086, guid: 45e55419f97a688439d0430e74a78547, type: 3}
+      propertyPath: HoverMultiply
+      value: 1.17
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4563222562377626086, guid: 45e55419f97a688439d0430e74a78547, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

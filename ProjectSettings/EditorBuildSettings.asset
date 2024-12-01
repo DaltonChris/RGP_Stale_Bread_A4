@@ -59,4 +59,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Realm3/Level- 16.unity
     guid: 11ec0a9c6eb1c2c4a9d87ae26d8b313d
+  - enabled: 1
+    path: Assets/Scenes/Realm3/Level- 17.unity
+    guid: d8c2ffe67077e9c4c98aeea4467398d8
+  - enabled: 1
+    path: Assets/Scenes/Realm3/Level- 18.unity
+    guid: fff8b351e07208e459f70a7ae6a55584
   m_configObjects: {}
