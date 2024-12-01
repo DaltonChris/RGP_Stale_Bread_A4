@@ -169,17 +169,18 @@ public class Ball : MonoBehaviour
         {
             OnBecameInvisible(); // Call Method to reset ball
         }
-        else
+        else if (!collision.gameObject.CompareTag("Shape")) // Ignore objects with the "Shape" tag
         {
             Instantiate(hitParticles, transform.position, Quaternion.identity);
-            //int randSFX = UnityEngine.Random.Range(0, hitSFX.Length);     // Get random hit sfx clip- disabled in favor of velocity based selection
-            float velocityVolume = rb.velocity.magnitude/15.0f;             // Map the velocity to a value roughly between 0 - 1 to get the volume
-            velocityVolume = Mathf.Clamp01(velocityVolume);                 // Prevent the volume from going over 1 and potentially clipping
-            int sfxNumber = Mathf.FloorToInt(velocityVolume*10);            // Select an SFX clip based on the velocity, because the clips are organised by pitch
-            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume); // Play the relevant clip
-            
+
+            // Get random hit SFX based on velocity
+            float velocityVolume = rb.velocity.magnitude / 15.0f; // Map velocity to 0-1 range
+            velocityVolume = Mathf.Clamp01(velocityVolume); // Ensure volume doesn't exceed 1
+            int sfxNumber = Mathf.FloorToInt(velocityVolume * 10); // Select SFX clip based on velocity
+            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume); // Play the clip
         }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Flag"))
