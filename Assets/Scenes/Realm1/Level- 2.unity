@@ -245,17 +245,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b5b5765488282944923c239c8592fe3, type: 3}
---- !u!114 &517620150 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
-  m_PrefabInstance: {fileID: 1641895780}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f74ae7f53a2e6489e40a1b086152e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &529485423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,22 +491,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2077716999143337436, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_Name
-      value: ResetButton
+    - target: {fileID: 1977846159013189128, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3508184372867738503, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 517620150}
     - target: {fileID: 4197331483828115964, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 945880155}
+    - target: {fileID: 4197331483828115964, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
     - target: {fileID: 4367577236879269087, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 945880155}
+    - target: {fileID: 4367577236879269087, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 5444951589133095006, guid: ee4795500d2d02348b7ed1577ed36c5b, type: 3}
       propertyPath: m_Name
       value: UI Canvas
@@ -660,6 +653,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3988702618863279017, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5122701388768831459, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

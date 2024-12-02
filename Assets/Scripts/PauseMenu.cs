@@ -8,10 +8,16 @@ public class PauseMenu : MonoBehaviour
     public static bool IsPaused = false;  // Static variable to check pause state
     public GameObject pauseMenuUI;
 
+    private void Start()
+    {
+        pauseMenuUI.SetActive(false);
+        IsPaused = false;
+    }
+
     void Update()
     {
         // Capture Escape key to pause or resume the game
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (IsPaused)
             {
