@@ -1983,9 +1983,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Shoot the ball, reach the flag\n\nSpace to shoot\n\nL SHIFT TO PAUSE\n\naim
-    with the mouse\n\ngreen shapes are moveable \nclick and drag to move\n\nA/D or
-    <- / -> to rotate shapes\n"
+  m_text: "Shoot the ball, reach the flag\n\nSpace to shoot\n\nESC TO PAUSE\n\nTAP
+    R to reset ball, HOLD R to reset level\n\naim with the mouse\n\ngreen shapes
+    are moveable \nclick and drag to move\n\nA/D or <- / -> to rotate shapes\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a398c0b5733755c4fbabfce212953126, type: 2}
   m_sharedMaterial: {fileID: -6881947078098782946, guid: a398c0b5733755c4fbabfce212953126, type: 2}
@@ -2012,8 +2012,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
