@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -118,9 +119,17 @@ public class LevelSelector : MonoBehaviour
     private void OnLevelButtonClicked(int levelIndex)
     {
         Debug.Log("Level " + levelIndex + " selected!");
-        
 
-        // DO LEVEL FUNCTION FOR BUTTONS
+
+        if (levelIndex+1 < SceneManager.sceneCountInBuildSettings)
+        {
+            int levelToLoad = levelIndex + 1;
+            SceneManager.LoadScene(levelToLoad); // Load the scene by build index
+        }
+        else
+        {
+            Debug.LogError("Level " + levelIndex + " does not exist in the Build Settings.");
+        }
 
     }
 }

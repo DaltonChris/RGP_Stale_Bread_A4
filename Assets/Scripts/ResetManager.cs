@@ -71,7 +71,7 @@ public class ResetManager : MonoBehaviour
             }
             else
             {
-                levelText.text = $"Level: {SceneManager.GetActiveScene().buildIndex}";
+                levelText.text = $"Level: {SceneManager.GetActiveScene().buildIndex + - 1}";
             }
         }
         // Store the original positions of all draggable objects

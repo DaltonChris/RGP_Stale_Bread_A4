@@ -48,6 +48,6 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         IsPaused = false;
-        SceneManager.LoadScene("StartScreen");
+        SceneManager.LoadScene("Level_Select");
     }
 }
