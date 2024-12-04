@@ -2751,8 +2751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelCanvasPrefab: {fileID: 9109736193278920571, guid: def3a6cc49c6a9748b9575d60e0e6da1, type: 3}
   LevelButtonPrefab: {fileID: 2046257633301867819, guid: 9eb281447f2df304994172c7cb805aa6, type: 3}
-  _TotalLevels: 27
-  _LevelsPerMenu: 9
+  _TotalLevels: 18
+  _LevelsPerMenu: 6
   _Menus: []
   _Panel_2_Colour: {r: 1, g: 0, b: 0.71639395, a: 0.49019608}
   _Panel_3_Colour: {r: 1, g: 0.101288594, b: 0, a: 0.49019608}
@@ -2771,7 +2771,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 100
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0

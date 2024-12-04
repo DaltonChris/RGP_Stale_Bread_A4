@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
     float splitDefValue = -100f;
     float splitHitValue = 100f;
     DepthOfField DepthOfField;
-    float dofDefValue = 1f;
+    float dofDefValue = .25f;
     float dofHitValue = 300f;
     public float lerpDuration = 2.25f;
 
@@ -277,7 +277,7 @@ public class Ball : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         BackObj.SetActive(false);
-        chromaticAberration?.intensity.Override(chromaticValueOnHit);
+        
     }
 
     void CompleteLevel(GameObject flag)
@@ -285,7 +285,7 @@ public class Ball : MonoBehaviour
         hasWon = true;
         ResetManager.Instance.isWinning = true;
         DisabledInteractions();
-        DepthOfField.focalLength.Override(dofDefValue);
+        
         SfxManager.Instance.PlaySfx(victorySFX);
         StartCoroutine(WinParticles(flag));
         Debug.Log("Level Completed");
@@ -294,6 +294,9 @@ public class Ball : MonoBehaviour
 
     IEnumerator WinParticles(GameObject flag)
     {
+        DepthOfField.focalLength.Override(0);
+        yield return new WaitForSeconds(0.25f);
+        Time.timeScale = 0.85f;
         // Array of particle prefabs
         GameObject[] particlePrefabs = { firedParticles, hitParticles, destroyParticles };
         float duration = 1.25f;        // Total duration for fireworks
@@ -327,6 +330,10 @@ public class Ball : MonoBehaviour
             }
         }
         Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(0.5f);
+        chromaticAberration?.intensity.Override(chromaticValueOnHit / 2);
+        yield return new WaitForSeconds(0.5f);
+        DepthOfField.focalLength.Override(dofDefValue);
     }
 
     IEnumerator LerpLensDistortion(float targetIntensity, float duration)

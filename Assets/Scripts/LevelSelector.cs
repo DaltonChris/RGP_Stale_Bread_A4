@@ -8,8 +8,8 @@ public class LevelSelector : MonoBehaviour
 {
     public GameObject LevelCanvasPrefab; // The prefab for the entire level canvas
     public GameObject LevelButtonPrefab; // The prefab for each level button
-    public int _TotalLevels = 27;         // Total number of levels
-    public int _LevelsPerMenu = 9;        // Levels per menu
+    public int _TotalLevels = 18;         // Total number of levels
+    public int _LevelsPerMenu = 6;        // Levels per menu
     public List<GameObject> _Menus = new List<GameObject>(); // Store references to the instantiated menus
 
     public Color _Panel_2_Colour;
