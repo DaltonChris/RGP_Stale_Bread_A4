@@ -2156,6 +2156,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 268458292009519388, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268458292009519388, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 268458292009519388, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4155758900756510805, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
       propertyPath: m_Name
       value: Walls
@@ -2170,7 +2182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6410134601812176128, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.76
+      value: -5.88
       objectReference: {fileID: 0}
     - target: {fileID: 6776574547186693313, guid: e4921d14eab5a2b40a6aa2fb8e69bcde, type: 3}
       propertyPath: m_LocalScale.x
