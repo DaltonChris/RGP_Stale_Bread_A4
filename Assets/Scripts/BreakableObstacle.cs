@@ -43,7 +43,13 @@ public class BreakableObstacle : MonoBehaviour
 
         transform.localPosition = originalPosition;
 
-        // Destroy the obstacle
-        Destroy(gameObject);
+        // Disable object so it's invisible and has no collision
+        gameObject.SetActive(false);
+    }
+
+    public void ResetBreakableObject()
+    {
+        // Bring it back
+        gameObject.SetActive(true);
     }
 }

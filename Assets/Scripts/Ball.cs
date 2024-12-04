@@ -197,14 +197,10 @@ public class Ball : MonoBehaviour
     {
         //Reset the gravity flipper visuals when a new ball spawns in, so the visuals match the current gravity of the ball
         //DraggableBoost[] gravFlips = (DraggableBoost)FindObjectsOfType(typeof(DraggableBoost)).gameObject.GetComponent<DraggableBoost>();
-        DraggableBoost[] gravFlips = (DraggableBoost[])GameObject.FindObjectsOfType(typeof(DraggableBoost));
-        foreach (DraggableBoost item in gravFlips)
+        foreach (DraggableBoost item in FindObjectsOfType<DraggableBoost>())
         {
-
             if(item.isGravityFlipper)
-            {
                 item.ResetGravityFlip();
-            }
         }
 
         DisabledInteractions();

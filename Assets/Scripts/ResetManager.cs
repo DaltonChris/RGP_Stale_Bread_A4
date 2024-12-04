@@ -9,6 +9,7 @@ using TMPro;
 public class ResetManager : MonoBehaviour
 {
     private Dictionary<Transform, Vector3> originalPositions = new Dictionary<Transform, Vector3>();
+    private List<BreakableObstacle> breakables = new List<BreakableObstacle>();
     private float holdTime = 2f;  // How long R must be held to reset the scene
     private float holdTimer = 0f;
     public GameObject resetUI;
@@ -79,6 +80,12 @@ public class ResetManager : MonoBehaviour
         {
             originalPositions[obj.transform] = obj.transform.position;
         }
+
+        foreach (var obj in FindObjectsOfType<BreakableObstacle>())
+        {
+            breakables.Add(obj);
+        }
+
     }
 
     private void Update()
@@ -168,6 +175,10 @@ public class ResetManager : MonoBehaviour
             entry.Key.position = entry.Value;
         }
         ResetBall();  // Also reset the ball during scene reset
+        foreach(var item in breakables)
+        {
+            item.ResetBreakableObject();
+        }
     }
 
     public void ResetCurrentSceneButton()

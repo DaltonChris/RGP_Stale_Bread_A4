@@ -29,8 +29,7 @@ public class DraggableBoost : MonoBehaviour
             GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
             GetComponent<ParticleSystem>().gravityModifier = 1.0f;
             MatchSpriteScale();
-            DraggableBoost[] draggableBoosts = (DraggableBoost[])GameObject.FindObjectsOfType(typeof(DraggableBoost));
-            foreach(DraggableBoost item in draggableBoosts)
+            foreach(DraggableBoost item in FindObjectsOfType<DraggableBoost>())
             {
                 if(item.isGravityFlipper)
                     allGravFlips.Add(item);
