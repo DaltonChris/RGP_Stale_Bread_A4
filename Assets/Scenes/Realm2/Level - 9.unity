@@ -189,7 +189,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 64440769}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d1096a5ab8210245a5b11bd5969d566, type: 3}
   m_Name: 
@@ -1809,7 +1809,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2081,6 +2081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4202123972045100729, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 90cdb13b129acad43bc4c19e29f98de2, type: 2}
     - target: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
       propertyPath: resetUI
       value: 

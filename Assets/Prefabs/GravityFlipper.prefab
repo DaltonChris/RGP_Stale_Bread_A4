@@ -164,7 +164,7 @@ MonoBehaviour:
   isGravityFlipper: 1
   weakBoostSFX: {fileID: 8300000, guid: d8258709da6ff26458285fbbd6282b89, type: 3}
   strongBoostSFX: {fileID: 8300000, guid: 21c5bc28801506947ac0179044c704f4, type: 3}
-  gravityFlipSFX: {fileID: 0}
+  gravityFlipSFX: {fileID: 8300000, guid: b08fa806563470c4ab8102fd95b83787, type: 3}
   scrollDirection: {x: 0, y: -1}
   scrollValue: 0.5
 --- !u!95 &872023687370981093

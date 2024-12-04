@@ -29,6 +29,7 @@ public class Ball : MonoBehaviour
     [Header("SFX")]
     public AudioClip shotSFX;
     public AudioClip[] hitSFX;
+    public AudioClip crackingSFX;
     public AudioClip[] shatterSFX;
     public AudioClip victorySFX;
 
@@ -165,19 +166,25 @@ public class Ball : MonoBehaviour
     // Collison check for objects that need to be avoided
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        BreakableObstacle breakable = collision.gameObject.GetComponent<BreakableObstacle>();
+
         if (collision.gameObject.CompareTag("Destroy"))
         {
             OnBecameInvisible(); // Call Method to reset ball
         }
-        else if (!collision.gameObject.CompareTag("Shape")) // Ignore objects with the "Shape" tag
-        {
-            Instantiate(hitParticles, transform.position, Quaternion.identity);
 
             // Get random hit SFX based on velocity
             float velocityVolume = rb.velocity.magnitude / 15.0f; // Map velocity to 0-1 range
             velocityVolume = Mathf.Clamp01(velocityVolume); // Ensure volume doesn't exceed 1
             int sfxNumber = Mathf.FloorToInt(velocityVolume * 10); // Select SFX clip based on velocity
-            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume); // Play the clip
+            SfxManager.Instance.PlaySfx(hitSFX[sfxNumber], velocityVolume, 1.0f); // Play the clip
+
+        if (breakable != null)
+        {
+            // Get random hit SFX based on velocity
+            float randPitch = UnityEngine.Random.Range(0.5f, 1.5f);
+            float randVol = UnityEngine.Random.Range(0.4f, 0.8f);
+            SfxManager.Instance.PlaySfx(crackingSFX, randVol, randPitch);
         }
     }
 

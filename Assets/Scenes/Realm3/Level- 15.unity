@@ -3102,6 +3102,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4202123972045100729, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bf6ba5bd1036f04496b554ce097b606, type: 2}
     - target: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
       propertyPath: resetUI
       value: 

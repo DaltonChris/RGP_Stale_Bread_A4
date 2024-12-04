@@ -47,9 +47,10 @@ public class SfxManager : MonoBehaviour
         SfxVolume = volume;
     }
 
-    public void PlaySfx(AudioClip clip, float clipVolume = 1.0f)
+    public void PlaySfx(AudioClip clip, float clipVolume = 1.0f, float clipPitch = 1.0f)
     {
         sfxSource.PlayOneShot(clip, clipVolume);
+        sfxSource.pitch = clipPitch;
     }
 
 }

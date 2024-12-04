@@ -212,6 +212,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f5e984d2308dcf54e943f700c2ecb5c5, type: 3}
   - {fileID: 8300000, guid: a3f6bdb4d7d0624469d5d336616aa6b9, type: 3}
   - {fileID: 8300000, guid: f20e05c17f13ce44ab749a0347a77c9f, type: 3}
+  crackingSFX: {fileID: 8300000, guid: afc94188b4147b947a6d4eeecafb8222, type: 3}
   shatterSFX:
   - {fileID: 8300000, guid: 87c7351301abd1f44b56f7166961f570, type: 3}
   - {fileID: 8300000, guid: 47db3e819e05ce24f86b143c9222e940, type: 3}

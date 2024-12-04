@@ -919,6 +919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4549735870871536856, guid: 19d658af685626041a23924080d33b93, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7663697043063887691, guid: 19d658af685626041a23924080d33b93, type: 3}
       propertyPath: m_Name
       value: GravityField
@@ -1058,18 +1062,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 531961264}
     m_Modifications:
-    - target: {fileID: -53436432664483780, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_LocalBounds.m_Center.y
-      value: -0.00000011920929
-      objectReference: {fileID: 0}
-    - target: {fileID: -53436432664483780, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.x
-      value: 0.9985302
-      objectReference: {fileID: 0}
-    - target: {fileID: -53436432664483780, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_LocalBounds.m_Extent.y
-      value: 0.99853027
-      objectReference: {fileID: 0}
     - target: {fileID: 3780639980177529875, guid: 19d658af685626041a23924080d33b93, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -1118,17 +1110,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5427712966727619596, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_Color.b
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 5427712966727619596, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_Color.g
-      value: 0.08235294
-      objectReference: {fileID: 0}
-    - target: {fileID: 5427712966727619596, guid: 19d658af685626041a23924080d33b93, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6117647
+    - target: {fileID: 4549735870871536856, guid: 19d658af685626041a23924080d33b93, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7663697043063887691, guid: 19d658af685626041a23924080d33b93, type: 3}
       propertyPath: m_Name
@@ -2012,6 +1996,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4202123972045100729, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bf6ba5bd1036f04496b554ce097b606, type: 2}
     - target: {fileID: 4520777822573607581, guid: 93dc2fa1f2feb9b4aa0b160e2f86353a, type: 3}
       propertyPath: resetUI
       value: 
