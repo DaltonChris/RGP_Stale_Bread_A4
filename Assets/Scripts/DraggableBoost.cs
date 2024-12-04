@@ -19,12 +19,22 @@ public class DraggableBoost : MonoBehaviour
 
     private Vector2 scrollVector;
 
+    private List<DraggableBoost> allGravFlips = new List<DraggableBoost>();
+
     private void Start()
     {
         if (isGravityFlipper)
         {
-            scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue);
+            scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue * -1);
             GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
+            GetComponent<ParticleSystem>().gravityModifier = 1.0f;
+            MatchSpriteScale();
+            DraggableBoost[] draggableBoosts = (DraggableBoost[])GameObject.FindObjectsOfType(typeof(DraggableBoost));
+            foreach(DraggableBoost item in draggableBoosts)
+            {
+                if(item.isGravityFlipper)
+                    allGravFlips.Add(item);
+            }
         }
     }
 
@@ -42,8 +52,13 @@ public class DraggableBoost : MonoBehaviour
                     // Flip the gravity on the ball
                     ballRigidbody.gravityScale *= -1;
 
-                    scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue * ballRigidbody.gravityScale);
+                    // Update the visuals on the Gravity Flippers in the scene
+                    scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue * ballRigidbody.gravityScale * -1);
                     GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
+                    foreach(DraggableBoost gravFlip in allGravFlips) // Makes sure the particles match on all of them
+                    {
+                        gravFlip.gameObject.GetComponent<ParticleSystem>().gravityModifier = ballRigidbody.gravityScale;
+                    }
 
                     // Play gravity flip SFX if available
                     if (gravityFlipSFX != null)
@@ -73,6 +88,25 @@ public class DraggableBoost : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void MatchSpriteScale()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        SpriteRenderer hoverSprite = GetComponentInChildren<SpriteRenderer>();
+        Transform light = this.gameObject.transform.Find("Light");
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+
+        light.localScale = sprite.size;
+        col.size = sprite.size;
+
+    }
+
+    public void ResetGravityFlip()
+    {
+        scrollVector = new Vector2(scrollDirection.x * scrollValue, scrollDirection.y * scrollValue * -1);
+        GetComponent<SpriteRenderer>().sharedMaterial.SetVector("_ScrollingOffset", scrollVector);
+        GetComponent<ParticleSystem>().gravityModifier = 1;
     }
 
 }

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6017804663770496169}
   - component: {fileID: 2040907404699190762}
   m_Layer: 0
-  m_Name: SafeGravityFeild
+  m_Name: SafeGravityField
   m_TagString: Shape
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4934,7 +4934,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cddbdf5f19e339f4495a7228a354887e, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

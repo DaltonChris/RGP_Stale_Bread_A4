@@ -195,6 +195,18 @@ public class Ball : MonoBehaviour
     /// <returns></returns>
     public IEnumerator DestroyAfterLerp()
     {
+        //Reset the gravity flipper visuals when a new ball spawns in, so the visuals match the current gravity of the ball
+        //DraggableBoost[] gravFlips = (DraggableBoost)FindObjectsOfType(typeof(DraggableBoost)).gameObject.GetComponent<DraggableBoost>();
+        DraggableBoost[] gravFlips = (DraggableBoost[])GameObject.FindObjectsOfType(typeof(DraggableBoost));
+        foreach (DraggableBoost item in gravFlips)
+        {
+
+            if(item.isGravityFlipper)
+            {
+                item.ResetGravityFlip();
+            }
+        }
+
         DisabledInteractions();
         if (!hasWon)
         {

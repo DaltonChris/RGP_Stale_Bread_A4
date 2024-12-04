@@ -28,7 +28,7 @@ public class Draggable : MonoBehaviour
     ChromaticAberration chromaticAberration;
     CinemachineVirtualCamera virtualCam;
 
-
+    public Color EmptyColor = new Color(1, 1, 1, 0);
     public GameObject HoverSprite;  // Child object with hover effect sprite
     public Color HoverColour = Color.white; // Colour to tint the hoversprite
     public float HoverMultiply = 1.2f;   // How big to make hover sprite when hovering
@@ -50,7 +50,8 @@ public class Draggable : MonoBehaviour
         rb.isKinematic = true;  // Disable physics interactions
 
         HoverSprite.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
-        HoverSprite.GetComponent<SpriteRenderer>().color = HoverColour;
+        HoverSprite.GetComponent<SpriteRenderer>().size = GetComponent<SpriteRenderer>().size;
+        HoverSprite.GetComponent<SpriteRenderer>().color = EmptyColor;
         virtualCam = GameObject.FindWithTag("CineCam").GetComponent<CinemachineVirtualCamera>();
 
         // Access the Chromatic Aberration component in the Volume
@@ -197,11 +198,13 @@ public class Draggable : MonoBehaviour
     private void HoverEffect()
     {
         HoverSprite.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f) * HoverMultiply;
+        HoverSprite.GetComponent<SpriteRenderer>().color = HoverColour;
     }
 
     private void EndHover()
     {
         HoverSprite.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        HoverSprite.GetComponent<SpriteRenderer>().color = EmptyColor;
     }
 
     private void ClickEffect()
